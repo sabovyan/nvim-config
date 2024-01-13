@@ -46,6 +46,26 @@ return {
 					require("codeium").setup({})
 				end,
 			},
+
+			{
+				"zbirenbaum/copilot-cmp",
+				dependencies = {
+					"zbirenbaum/copilot.lua",
+					config = function()
+						require("copilot").setup({
+							suggestion = { enabled = false },
+							panel = { enabled = false },
+							filetypes = {
+								markdown = true,
+								help = true,
+							},
+						})
+					end,
+				},
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
 		},
 		config = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -86,6 +106,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "copilot", group_index = 2 },
 					{ name = "codeium" },
 					{ name = "luasnip" },
 					{ name = "path" },
@@ -104,19 +125,9 @@ return {
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[Lua]",
 						},
-						symbol_map = { Codeium = "" },
+						symbol_map = { Codeium = "", Copilot = "" },
 					}),
 				},
-				-- formatting = {
-				-- 	format = function(_, item)
-				-- 		-- local icons = require("lazyvim.config").icons.kinds
-				-- 		-- if icons[item.kind] then
-				-- 		-- 	item.kind = icons[item.kind] .. item.kind
-				-- 		-- end
-
-				-- 		return item
-				-- 	end,
-				-- },
 				experimental = {
 					ghost_text = {
 						hl_group = "CmpGhostText",
