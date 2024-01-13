@@ -1,3 +1,5 @@
+-- NOTE:
+-- checkout out RECOMMENDED LSP PLUgin:  https://github.com/neovim/nvim-lspconfig/wiki/Language-specific-plugins
 local Util = require("plugins.lsp.on_attach")
 
 return {
@@ -6,6 +8,7 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"neovim/nvim-lspconfig",
+		{ "folke/neodev.nvim", opts = {} },
 	},
 
 	config = function()
@@ -29,10 +32,8 @@ return {
 		-- After setting up mason-lspconfig you may set up servejrs via lspconfig
 		-- require("lspconfig").lua_ls.setup {}
 		-- require("lspconfig").rust_analyzer.setup {}
-		-- ...
-		--
-		--
 
+		require("neodev").setup({})
 		require("mason-lspconfig").setup_handlers({
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
