@@ -1,3 +1,4 @@
+local Utils = require("utils")
 return {
 	"stevearc/conform.nvim",
 	dependancies = {
@@ -29,23 +30,12 @@ return {
 			},
 		})
 
-		local registry = require("mason-registry")
-		require("mason").setup()
-
 		local packages = {
 			"prettier",
 			"stylua",
 		}
 
-		for i = 1, #packages do
-			local installed = registry.is_installed(packages[i])
-			if installed == false then
-				print(string.format("%s is installing ......", packages[i]))
-				registry.get_package(packages[i]):install()
-				-- else
-				-- 	print(string.format("%s is already installed!", packages[i]))
-			end
-		end
+		Utils.install_LSP(packages)
 
 		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
 			conform.format({
