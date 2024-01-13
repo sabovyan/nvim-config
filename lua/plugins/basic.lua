@@ -16,6 +16,7 @@ return {
 		wk.register({
 			g = { name = "[G]it" },
 			c = { name = "[C]ode [A]ction" },
+			b = { name = "[B]uffer" },
 		}, { prefix = "<leader>" })
 	end,
 }
