@@ -20,6 +20,7 @@ return {
 		-- See `:help telescope` and `:help telescope.setup()`
 		telescope.setup({
 			defaults = {
+				path_display = { "truncate" },
 				prompt_prefix = " ",
 				selection_caret = "󰽐 ",
 				mappings = {
