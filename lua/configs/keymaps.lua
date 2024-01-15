@@ -29,3 +29,5 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>e", "<cmd>:Explore <CR>", { silent = true, desc = "[O]pen Netrw" })
+
+vim.keymap.set("n", "<leader>cc", function() vim.cmd("let @+ = expand('%:p')") end, {silent = true, desc = "[C]opy [F]ile [P]ath"})
