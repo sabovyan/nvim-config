@@ -20,7 +20,6 @@ return {
 				"bashls",
 				"cssls",
 				"dockerls",
-				"eslint",
 				"emmet_ls",
 				"html",
 				"intelephense",
@@ -44,6 +43,7 @@ return {
 			-- a dedicated handler.
 			function(server_name) -- default handler (optional)
 				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
 					on_attach = Util.on_attach,
 				})
 			end,
