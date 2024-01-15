@@ -17,6 +17,8 @@ return {
 			g = { name = "[G]it" },
 			c = { name = "[C]ode [A]ction" },
 			b = { name = "[B]uffer" },
+			f = { name = "[F]ile" },
+			s = { name = "[S]earch" },
 		}, { prefix = "<leader>" })
 	end,
 }
