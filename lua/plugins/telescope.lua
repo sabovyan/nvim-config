@@ -30,8 +30,6 @@ return {
 		telescope.setup({
 			defaults = {
 				path_display = { "truncate" },
-				prompt_prefix = " ",
-				selection_caret = "󰽐 ",
 				mappings = {
 					i = {
 						["<esc>"] = actions.close,
