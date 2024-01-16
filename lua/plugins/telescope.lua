@@ -1,5 +1,6 @@
 -- plugins/telescope.lua:
 return {
+
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.5",
 	dependencies = {
@@ -8,6 +9,14 @@ return {
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		},
+		{
+			"danielfalk/smart-open.nvim",
+			branch = "0.2.x",
+			config = function() end,
+			dependencies = {
+				"kkharji/sqlite.lua",
+			},
 		},
 	},
 
@@ -59,6 +68,11 @@ return {
 							}),
 						},
 					},
+				},
+				smart_open = {
+					show_scores = true,
+					match_algorithm = "fzy",
+					open_buffer_indicators = { previous = "👀", others = "🙈" },
 				},
 			},
 			pickers = {
@@ -114,7 +128,10 @@ return {
 		nmap("<leader>:", "<cmd>Telescope command_history<cr>", "Command History")
 		nmap("<leader>ff", find_files_by_workspace, "[F]ind Files [B]y [W]orkspace")
 		nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
-		nmap("<leader><space>", builtin.find_files, "Find Files [R]oot [D]ir")
+		-- smart open
+		vim.keymap.set("n", "<leader><leader>", function()
+			require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
+		end, { noremap = true, silent = true, desc = "[S]mart [F]ile [S]earch" })
 
 		nmap("<leader>fr", "<cmd>Telescope oldfiles<cr>", "[O]pen [R]ecent [F]iles")
 
@@ -175,6 +192,7 @@ return {
 		pcall(telescope.load_extension, "fzf")
 
 		pcall(telescope.load_extension("live_grep_args"))
+		pcall(telescope.load_extension("smart_open"))
 	end,
 }
 
