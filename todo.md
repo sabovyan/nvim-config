@@ -8,7 +8,7 @@
 
 ## Keymaps:
 
-- [ ] buffer management `<leader> + bd`
+- [x] buffer management `<leader> + bd`
 - [x] window management `ctrl + h/j/k/l`
 
 ## LSP:
