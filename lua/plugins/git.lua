@@ -8,7 +8,7 @@ return {
 		config = function()
 			local gc = require("gitsigns")
 			gc.setup({
-				current_line_blame = false,
+				current_line_blame = true,
 				signs = {
 					add = { text = "▎" },
 					change = { text = "▎" },
