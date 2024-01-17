@@ -24,7 +24,7 @@
 
 ### ➡️ AutoComplete / Snippets:
 
-- [ ] Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+- [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
 
 ### ➡️ Format:
 
@@ -39,13 +39,14 @@
 
 ### ➡️ Colorscheme:
 
-- [ ] setup colorscheme
-- [ ] setup colorscheme for Telescope
+- [x] setup colorscheme
+- [x] setup colorscheme for Telescope
 
 ### ➡️ Git:
 
-- [ ] setup git
-- [ ] setup git keymaps
+- [x] setup gitsigns
+- [x] setkup lazygit
+- [ ] setup to show git commits for one file and view diffs
 
 ### ➡️ Session manager:
 
@@ -58,9 +59,9 @@
 
 ### ➡️ Status line:
 
-- [ ] should display file name
-- [ ] could be great to show it on top of the screen
-- [ ] should show current file saved/not save status
+- [x] should display file name
+- [x] could be great to show it on top of the screen - _not possible_
+- [x] should show current file saved/not save status
 
 ### ➡️ Telescope:
 
@@ -81,3 +82,7 @@
 
 - [x] buffer management `<leader> + bd`
 - [x] window management `ctrl + h/j/k/l`
+
+# V2 - TODO
+
+- [ ] _Optional:_ Replace nvim-lualine/lualine.nvim
