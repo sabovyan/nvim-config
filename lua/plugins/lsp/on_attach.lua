@@ -15,20 +15,13 @@ function M.on_attach(_, bufnr)
 		vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	print("setLsp_keymap")
-
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
 	nmap("<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-	nmap(
-		"gd",
-		vim.lsp.buf.definition,
-		--  function()
-		--	require("telescope.builtin").lsp_definitions({ reuse_win = true })
-		--  end,
-		"Goto Definition"
-	)
+	nmap("gd", function()
+		require("telescope.builtin").lsp_definitions({ reuse_win = true })
+	end, "Goto Definition")
 
 	nmap("gr", "<cmd>Telescope lsp_references<cr>", "References")
 	nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
