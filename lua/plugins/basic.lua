@@ -1,4 +1,5 @@
 return {
+
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -73,6 +74,31 @@ return {
 				desc = "Delete Buffer (Force)",
 			},
 		},
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local function hello()
+				local bufnr = vim.api.nvim_get_current_buf()
+				local isModified = vim.api.nvim_buf_get_option(bufnr, "modified")
+
+				return isModified and "" or ""
+			end
+			require("lualine").setup({
+				sections = {
+
+					lualine_c = {
+						"filename",
+						{
+							hello,
+
+							color = { fg = "#9ECE6A" }, -- Highlight groups can also be used.
+						},
+					},
+				},
+			})
+		end,
 	},
 }
 
