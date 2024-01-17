@@ -9,6 +9,7 @@ return {
 		"williamboman/mason.nvim",
 		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
+		"b0o/SchemaStore.nvim",
 		{ "folke/neodev.nvim", opts = {} },
 	},
 
@@ -26,6 +27,7 @@ return {
 				"svelte",
 				"tailwindcss",
 				"tsserver",
+				"jsonls",
 			},
 		})
 
@@ -45,6 +47,23 @@ return {
 				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 					on_attach = Util.on_attach,
+				})
+			end,
+			["jsonls"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.jsonls.setup({
+					on_attach = Util.on_attach,
+					capabilities = capabilities,
+
+					settings = {
+						json = {
+							schemas = require("schemastore").json.schemas(),
+							format = {
+								enable = true,
+							},
+							validate = { enable = true },
+						},
+					},
 				})
 			end,
 			["lua_ls"] = function()

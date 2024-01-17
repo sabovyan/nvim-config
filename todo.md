@@ -15,9 +15,9 @@
 
 ### ➡️ LSP:
 
-- [x] !!!!! :warning: keymps for LSP (!!!! not working now)
+- [x] keymps for LSP
 - [ ] setup eslint and prettier in a way that when eslint and prettier config is available in the project, it uses that config to format. And when it is not there it should use prettier as a formatter.
-- [ ] jsonls SchemaStore.nvim Note, this provides schemas for jsonls but still depends on lspconfig.
+- [x] jsonls SchemaStore.nvim Note, this provides schemas for jsonls but still depends on lspconfig.
 - [ ] addvanced Typescript setup
 - [ ] fix go to definition: it should go to definition of the symbol under the cursor and place that line in the middle of the screen
 - [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
