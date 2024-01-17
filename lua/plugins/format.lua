@@ -41,9 +41,10 @@ return {
 			"<leader>cf",
 			function()
 				require("conform").format({
+					timeout_ms = 3000,
+					async = true, -- not recommended to change
+					quiet = false, -- not recommended to change
 					lsp_fallback = true,
-					async = true,
-					timeout_ms = 500,
 				})
 			end,
 			{ desc = "Format file or range (in visual mode)" },
@@ -72,7 +73,7 @@ return {
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { timeout_ms = 500, lsp_fallback = true }
+				return { timeout_ms = 3000, async = true, quiet = false, lsp_fallback = true }
 			end,
 		})
 
