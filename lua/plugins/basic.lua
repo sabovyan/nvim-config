@@ -79,22 +79,19 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			local function hello()
-				local bufnr = vim.api.nvim_get_current_buf()
-				local isModified = vim.api.nvim_buf_get_option(bufnr, "modified")
-
-				return isModified and "" or ""
-			end
 			require("lualine").setup({
 				sections = {
-
 					lualine_c = {
-						"filename",
-						{
-							hello,
-
-							color = { fg = "#9ECE6A" }, -- Highlight groups can also be used.
-						},
+						"buffers",
+						--	{
+						--		"filename",
+						--		symbols = {
+						--			modified = "", -- Text to show when the file is modified.
+						--			readonly = "", -- Text to show when the file is non-modifiable or readonly.
+						--			unnamed = "[No Name]", -- Text to show for unnamed buffers.
+						--			newfile = "[New]", -- Text to show for newly created file before first write
+						--		},
+						--	},
 					},
 				},
 			})
