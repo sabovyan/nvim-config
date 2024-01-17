@@ -13,7 +13,7 @@
 
 ## Inside buffer aka Coding
 
-### ➡️LSP:
+### ➡️ LSP:
 
 - [x] !!!!! :warning: keymps for LSP (!!!! not working now)
 - [ ] setup eslint and prettier in a way that when eslint and prettier config is available in the project, it uses that config to format. And when it is not there it should use prettier as a formatter.
