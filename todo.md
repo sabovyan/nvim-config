@@ -9,7 +9,8 @@
 | Format             | Git                     | _\*find a good plugin to wok with commits PR's diff etc_                                                        |
 | Lint               | Sessions                |
 | Comments           | Netrw                   |
-|                    | keymaps                 |
+| Cursorline         | keymaps                 |
+|                    | startup                 |
 
 ## Inside buffer aka Coding
 
@@ -41,13 +42,13 @@
 
 ### Format:
 
-- [ ] fix slow formatting
+- [ ] make format work faster
 
 ## Outside buffer aka Editor
 
 ### Startup:
 
-- [ ] https://github.com/nvimdev/dashboard-nvim
+- [x] https://github.com/nvimdev/dashboard-nvim
 
 ### Note Taking
 
@@ -59,7 +60,7 @@
 ### Treesitter:
 
 - [x] setup treesitter
-- [ ] setup treesitter objects
+- [ ] _(optional)_ setup treesitter objects
 
 ### Colorscheme:
 
@@ -81,6 +82,8 @@
       it could be better to save session every time on closing and have a shortcut that will open that session
       Also it's possible that the solution is in shada file
       more info here: https://neovim.io/doc/user/usr_21.html#21.3
+
+### Navigation within the file:
 
 - [ ] leap.nvim https://github.com/ggandor/leap.nvim **VS** https://github.com/folke/flash.nvim
 
