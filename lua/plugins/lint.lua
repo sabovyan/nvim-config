@@ -38,6 +38,7 @@ return {
 				},
 				format = true,
 			},
+
 			on_attach = function(_, bufnr)
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = bufnr,
@@ -56,63 +57,3 @@ return {
 		})
 	end,
 }
-
--- ["eslint"] = function()
--- 	local lspconfig = require("lspconfig")
--- 	lspconfig.eslint.setup({
-
--- 		on_attach = function(client, bufnr)
--- 			print("eslint on_attach")
--- 			Util.set_Lsp_keymap()
-
--- 			-- Use EslintFixAll on Neovim < 0.10.0
--- 			local diag = vim.diagnostic.get(
--- 				bufnr,
--- 				{ namespace = vim.lsp.diagnostic.get_namespace(client.id) }
--- 			)
--- 			if #diag > 0 then
--- 				vim.cmd("EslintFixAll")
--- 			end
-
--- 			-- activate formatting
--- 			--  if client.resolved_capabilities.document_formatting then
--- 			--    vim.cmd("autocmd BufWritePre <buffer> eslint --fix <buffer>")
--- 			--  end
-
--- 			--	if client.name == "eslint" then
--- 			--		client.server_capabilities.documentFormattingProvider = true
--- 			--	elseif client.name == "tsserver" then
--- 			--		client.server_capabilities.documentFormattingProvider = false
--- 			--	end
-
--- 			--	local diag = vim.diagnostic.get(
--- 			--		bufnr,
--- 			--		{ namespace = vim.lsp.diagnostic.get_namespace(client.id) }
--- 			--	)
-
--- 			--	if #diag > 0 then
--- 			--		vim.cmd("EslintFixAll")
--- 			--	end
-
--- 			--	vim.api.nvim_create_autocmd("BufWritePre", {
--- 			--		pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
--- 			--		command = "silent! EslintFixAll",
--- 			--		group = vim.api.nvim_create_augroup(
--- 			--			"MyAutocmdsJavaScripFormatting",
--- 			--			{}
--- 			--		),
--- 			--	})
--- 		end,
--- 		capabilities = capabilities,
--- 		settings = {
-
--- 			-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
--- 			workingDirectory = { mode = "auto" },
--- 			codeActionOnSave = {
--- 				enable = true,
--- 				mode = "all",
--- 			},
--- 			format = true,
--- 		},
--- 	})
--- end,
