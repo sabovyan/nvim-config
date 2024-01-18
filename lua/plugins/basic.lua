@@ -97,6 +97,20 @@ return {
 			})
 		end,
 	},
+
+	{
+		"numToStr/Comment.nvim",
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+
+		lazy = false,
+		config = function()
+			vim.g.skip_ts_context_commentstring_module = true
+
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+	},
 }
 
 -- INFO: Automatically highlights other instances of the word under your cursor.
@@ -182,27 +196,6 @@ return {
 -- 		},
 -- 	},
 --
--- 	-- comments
--- 	{
--- 		"JoosepAlviste/nvim-ts-context-commentstring",
--- 		lazy = true,
--- 		opts = {
--- 			enable_autocmd = false,
--- 		},
--- 	},
--- 	{
--- 		"echasnovski/mini.comment",
--- 		event = "VeryLazy",
--- 		opts = {
--- 			options = {
--- 				custom_commentstring = function()
--- 					return require("ts_context_commentstring.internal").calculate_commentstring()
--- 						or vim.bo.commentstring
--- 				end,
--- 			},
--- 		},
--- 	},
-
 -- 	-- Better text-objects
 -- 	{
 -- 		"echasnovski/mini.ai",
