@@ -105,12 +105,13 @@ return {
 					end,
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
+
+					{ name = "nvim_lsp", group_index = 1 },
 					{ name = "copilot", group_index = 2 },
-					{ name = "codeium" },
-					{ name = "luasnip" },
-					{ name = "path" },
-					{ name = "nvim_lua" },
+					{ name = "codeium", group_index = 2 },
+					{ name = "luasnip", group_index = 1 },
+					{ name = "path", gorud_index = 2 },
+					{ name = "nvim_lua", group_index = 1 },
 				}, {
 					{ name = "buffer" },
 				}),
@@ -124,6 +125,8 @@ return {
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[Lua]",
+							codeium = "[Codeium]",
+							copilot = "[Copilot]",
 						},
 						symbol_map = { Codeium = "", Copilot = "" },
 					}),

@@ -8,7 +8,7 @@
 | AutoComplete       | Colorscheme             |                                                                                                                 |
 | Format             | Git                     | _\*find a good plugin to wok with commits PR's diff etc_                                                        |
 | Lint               | Sessions                |
-|                    | Netrw                   |
+| Comments           | Netrw                   |
 |                    | keymaps                 |
 
 ## Inside buffer aka Coding
@@ -18,7 +18,7 @@
 - [ ] https://github.com/RRethy/vim-illuminate
 - [ ] https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md
 
-### ➡️ LSP:
+### LSP:
 
 - [x] keymps for LSP
 - [ ] setup eslint and prettier in a way that when eslint and prettier config is available in the project, it uses that config to format. And when it is not there it should use prettier as a formatter.
@@ -27,21 +27,19 @@
 - [x] _(not possible)_ fix go to definition: it should go to definition of the symbol under the cursor and place that line in the middle of the screen
 - [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
 
-### ➡️ AutoComplete / Snippets:
+### AutoComplete / Snippets:
 
-- [ ] add groups to autocomplete
-- [ ] order autocomplete groups
+- [x] order autocomplete groups
 - [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
 
 ### Helpers:
 
-- [ ] ts auto tag https://github.com/windwp/nvim-ts-autotag
-- [ ] Comments
-  - [ ]https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-  - [ ] https://github.com/numToStr/Comment.nvim
-  - [ ] make sure that it will work with tsx files
+- [x] Comments
+  - [x] https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+  - [x] https://github.com/numToStr/Comment.nvim
+  - [x] make sure that it will work with tsx files
 
-### ➡️ Format:
+### Format:
 
 - [ ] fix slow formatting
 
@@ -58,24 +56,24 @@
 - [ ] https://github.com/vuki656/package-info.nvim - show packages updates in package.json file
       not sure where does this package belongs
 
-### ➡️ Treesitter:
+### Treesitter:
 
 - [x] setup treesitter
 - [ ] setup treesitter objects
 
-### ➡️ Colorscheme:
+### Colorscheme:
 
 - [x] setup colorscheme
 - [x] setup colorscheme for Telescope
 
-### ➡️ Git:
+### Git:
 
 - [x] setup gitsigns
 - [x] setkup lazygit
 - [ ] check out gh.nvim https://github.com/ldelossa/gh.nvim?tab=readme-ov-file
 - [ ] setup to show git commits for one file and view diffs
 
-### ➡️ Session manager:
+### Session manager:
 
 - [ ] check out shada file
 - [ ] check out how to save view
@@ -86,13 +84,13 @@
 
 - [ ] leap.nvim https://github.com/ggandor/leap.nvim **VS** https://github.com/folke/flash.nvim
 
-### ➡️ Status line:
+### Status line:
 
 - [x] should display file name
 - [x] could be great to show it on top of the screen - _not possible_
 - [x] should show current file saved/not save status
 
-### ➡️ Telescope:
+### Telescope:
 
 - [x] add telescope
 - [x] add keymaps
@@ -100,14 +98,14 @@
 - [x] change coloescheme for Telescope
 - [ ] add `.env.*` to be searched by telescope
 
-### ➡️ netrw:
+### netrw:
 
 - [x] setup file manipulation commands (copy, move, delete, **rename**) in netrw (won't do it)
 - [x] setup netrw to opend in a prefered directory. you should find the closest directory that contains package.json
 
   - [x] also have option that will open the root directory
 
-### ➡️ Keymaps:
+### Keymaps:
 
 - [x] buffer management `<leader> + bd`
 - [x] window management `ctrl + h/j/k/l`
