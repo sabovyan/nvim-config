@@ -9,12 +9,6 @@ return {
 		-- [[ Configure Treesitter ]]
 		-- See `:help nvim-treesitter`
 		require("nvim-treesitter.configs").setup({
-			-- NOTE: this are default values
-			modules = {},
-			sync_install = false,
-			auto_install = false,
-			ignore_install = {},
-			-- NOTE: end
 
 			ensure_installed = {
 				"lua",
