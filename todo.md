@@ -2,16 +2,16 @@
 
 ## Main Areas to work on:
 
-| In Buffer / Coding | Outside Buffer / Editor | Comments                                                                                                        |
-| ------------------ | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
-| LSP                | Treesitter              | _\*maybe treesitter should be part of LSP ?_ like each language should load/install its syntax witnin LSP setup |
-| AutoComplete       | Colorscheme             |                                                                                                                 |
-| Format             | Git                     | _\*find a good plugin to wok with commits PR's diff etc_                                                        |
-| Lint               | Sessions                |                                                                                                                 |
-| Comments           | Netrw                   |                                                                                                                 |
-| Cursorline         | keymaps                 |                                                                                                                 |
-|                    | startup                 |                                                                                                                 |
-|                    | terminal                |                                                                                                                 |
+| In Buffer / Coding | Outside Buffer / Editor | Comments                                                                                                      |
+| ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
+| LSP                | Treesitter              | _maybe treesitter should be part of LSP ? like each language should load/install its syntax witnin LSP setup_ |
+| AutoComplete       | Colorscheme             |                                                                                                               |
+| Format             | Git                     | _find a good plugin to wok with commits PR's diff etc_                                                        |
+| Lint               | Sessions                |                                                                                                               |
+| Comments           | Netrw                   |                                                                                                               |
+| Cursorline         | keymaps                 |                                                                                                               |
+|                    | startup                 |                                                                                                               |
+|                    | terminal                |                                                                                                               |
 
 ## Inside buffer aka Coding
 
