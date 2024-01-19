@@ -1,5 +1,4 @@
 return {
-
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -74,28 +73,6 @@ return {
 				desc = "Delete Buffer (Force)",
 			},
 		},
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup({
-				sections = {
-					lualine_c = {
-						"buffers",
-						--	{
-						--		"filename",
-						--		symbols = {
-						--			modified = "", -- Text to show when the file is modified.
-						--			readonly = "", -- Text to show when the file is non-modifiable or readonly.
-						--			unnamed = "[No Name]", -- Text to show for unnamed buffers.
-						--			newfile = "[New]", -- Text to show for newly created file before first write
-						--		},
-						--	},
-					},
-				},
-			})
-		end,
 	},
 
 	{
