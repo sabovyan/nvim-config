@@ -15,11 +15,6 @@
 
 ## Inside buffer aka Coding
 
-### Cursorline
-
-- [ ] https://github.com/RRethy/vim-illuminate
-- [ ] https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md
-
 ### LSP:
 
 - [x] keymps for LSP
@@ -38,7 +33,7 @@
 
 - [ ] get count of highlighted text/words search (to be able to get info on that line)
 
-  > **word** `(ghost text) 1/3`
+> **word** `(ghost text) 1/3`
 
 - [ ] translate typescript errors
 
@@ -53,14 +48,6 @@
 
 ## Outside buffer aka Editor
 
-### Visual:
-
-- [ ] https://github.com/folke/noice.nvim
-
-### Startup:
-
-- [x] https://github.com/nvimdev/dashboard-nvim
-
 ### Note Taking
 
 - [ ] add not taking plugin
@@ -71,11 +58,6 @@
 
 - [x] setup treesitter
 - [ ] _(optional)_ setup treesitter objects
-
-### Colorscheme:
-
-- [x] setup colorscheme
-- [x] setup colorscheme for Telescope
 
 ### Git:
 
@@ -95,14 +77,6 @@
 
 ### Navigation within the file:
 
-- [ ] leap.nvim https://github.com/ggandor/leap.nvim **VS** https://github.com/folke/flash.nvim
-
-### Status line:
-
-- [x] should display file name
-- [x] could be great to show it on top of the screen - _not possible_
-- [x] should show current file saved/not save status
-
 ### Telescope:
 
 - [x] add telescope
@@ -115,23 +89,45 @@
 
 - [x] setup file manipulation commands (copy, move, delete, **rename**) in netrw (won't do it)
 - [x] setup netrw to opend in a prefered directory. you should find the closest directory that contains package.json
-
   - [x] also have option that will open the root directory
 - [ ] fix netrw keymaps to be more intuitive
-
-### Keymaps:
-
-- [x] buffer management `<leader> + bd`
-- [x] window management `ctrl + h/j/k/l`
 
 ### Terminal
 
 - [ ] have basic terminal setup
 - [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
 
+### Colorscheme:
+
+- [x] setup colorscheme
+- [x] setup colorscheme for Telescope
+
+### Status line:
+
+- [x] should display file name
+- [x] could be great to show it on top of the screen - _not possible_
+- [x] should show current file saved/not save status
+
+### Keymaps:
+
+- [x] buffer management `<leader> + bd`
+- [x] window management `ctrl + h/j/k/l`
+
+### Startup:
+
+- [x] https://github.com/nvimdev/dashboard-nvim
+
 # V2 - TODO
 
 1. [ ] rearrange plugins in a way that they are grouped by their purpose
 
 - [ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+
+## Thing to check out
+
+- [ ] [Dropbar](https://github.com/Bekaboo/dropbar.nvim)
+- [ ] [eotest](https://github.com/nvim-neotest/neotest)
+- [ ] [noice](https://github.com/folke/noice.nvim)
+- [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
+- [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
 
