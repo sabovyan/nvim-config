@@ -97,6 +97,17 @@ return {
 		end,
 	},
 
+	-- INFO: a plugin to show loading status
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
+		},
+	},
 }
 
 -- INFO: Automatically highlights other instances of the word under your cursor.
