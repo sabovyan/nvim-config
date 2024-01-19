@@ -1,6 +1,6 @@
 -- NOTE:
 -- checkout out RECOMMENDED LSP PLUgin:  https://github.com/neovim/nvim-lspconfig/wiki/Language-specific-plugins
-local Util = require("plugins.lsp.on_attach")
+local Util = require("plugins.editor.lsp.on_attach")
 
 return {
 	"williamboman/mason-lspconfig.nvim",
