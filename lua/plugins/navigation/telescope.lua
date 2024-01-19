@@ -33,6 +33,7 @@ return {
 				mappings = {
 					i = {
 						["<esc>"] = actions.close,
+						["c-c"] = actions.close,
 						["<c-j>"] = actions.move_selection_next,
 						["<c-k>"] = actions.move_selection_previous,
 						["<s-k>"] = actions.cycle_history_prev,
