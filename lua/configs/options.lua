@@ -38,10 +38,9 @@ vim.o.completeopt = "menuone,noselect"
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.opt.conceallevel = 0
-vim.opt.colorcolumn = "79"
+vim.opt.colorcolumn = "100"
 
-vim.api.nvim_command("colorscheme habamax")
+vim.cmd.colorscheme("habamax")
 
 vim.o.smartindent = true
 vim.o.tabstop = 2
