@@ -88,6 +88,15 @@ return {
 			})
 		end,
 	},
+
+	-- INFO: show colors based on hex
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+
 }
 
 -- INFO: Automatically highlights other instances of the word under your cursor.
