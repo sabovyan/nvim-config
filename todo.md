@@ -36,6 +36,12 @@
 
 ### Helpers:
 
+- [ ] get count of highlighted text/words search (to be able to get info on that line)
+
+  > **word** `(ghost text) 1/3`
+
+- [ ] translate typescript errors
+
 - [x] Comments
   - [x] https://github.com/JoosepAlviste/nvim-ts-context-commentstring
   - [x] https://github.com/numToStr/Comment.nvim
@@ -47,6 +53,10 @@
 
 ## Outside buffer aka Editor
 
+### Visual:
+
+- [ ] https://github.com/folke/noice.nvim
+
 ### Startup:
 
 - [x] https://github.com/nvimdev/dashboard-nvim
@@ -54,7 +64,6 @@
 ### Note Taking
 
 - [ ] add not taking plugin
-
 - [ ] https://github.com/vuki656/package-info.nvim - show packages updates in package.json file
       not sure where does this package belongs
 
@@ -108,12 +117,21 @@
 - [x] setup netrw to opend in a prefered directory. you should find the closest directory that contains package.json
 
   - [x] also have option that will open the root directory
+- [ ] fix netrw keymaps to be more intuitive
 
 ### Keymaps:
 
 - [x] buffer management `<leader> + bd`
 - [x] window management `ctrl + h/j/k/l`
 
+### Terminal
+
+- [ ] have basic terminal setup
+- [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
+
 # V2 - TODO
 
+1. [ ] rearrange plugins in a way that they are grouped by their purpose
+
 - [ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+
