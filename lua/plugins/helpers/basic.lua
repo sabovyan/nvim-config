@@ -24,6 +24,17 @@ return {
 		end,
 	},
 
+	-- NOTE:  plugin to handle adding/removing/replacing surroundings (e.g {}, [], "" ...)
+	{
+		"echasnovski/mini.surround",
+		version = "*",
+		opts = {},
+		-- config = function()
+		-- 	local surround = require("surround")
+		-- 	surround.setup()
+		-- end,
+	},
+
 	--- INFO: comments
 	{
 		"folke/todo-comments.nvim",
@@ -97,7 +108,7 @@ return {
 		end,
 	},
 
-	-- INFO: a plugin to show loading status
+	-- INFO: a plugin to show
 	{
 		"j-hui/fidget.nvim",
 		opts = {
