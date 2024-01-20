@@ -6,9 +6,9 @@
 
 ### LSP:
 
-[x] keymaps - check out `plugins/lsp/on_attach.lua`
+- keymaps - check out `plugins/lsp/on_attach.lua`
 
-[x] supported LSP - check out `plugins/lsp/init.lua`
+- supported LSP - check out `plugins/lsp/init.lua`
 
 ```lua
 ensure_installed = {
@@ -27,21 +27,23 @@ ensure_installed = {
 
 ```
 
-[x] additional dependencies - check out `plugins/lsp/init.lua`
+- additional dependencies - check out `plugins/lsp/init.lua`
 
 ```lua
-	dependencies = {
-		"williamboman/mason.nvim",
-		"neovim/nvim-lspconfig",
-		"hrsh7th/cmp-nvim-lsp",
-		"b0o/SchemaStore.nvim",
-		{ "folke/neodev.nvim", opts = {} },
-	},
+{
+    dependencies = {
+        "williamboman/mason.nvim",
+        "neovim/nvim-lspconfig",
+        "hrsh7th/cmp-nvim-lsp",
+        "b0o/SchemaStore.nvim",
+        { "folke/neodev.nvim", opts = {} },
+    },
+}
 ```
 
 ### AutoComplete / Snippets:
 
-[x] `hrsh7th/nvim-cmp`
+- `hrsh7th/nvim-cmp`
 
 ```lua
 {
