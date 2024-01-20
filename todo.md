@@ -4,24 +4,24 @@
 
 [x] rearrange plugins in a way that they are grouped by their purpose
 
-### Status line:
+## Thing to check out
 
-[ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+- [ ] [Dropbar](https://github.com/Bekaboo/dropbar.nvim)
+- [ ] [neotest](https://github.com/nvim-neotest/neotest)
+- [ ] [noice](https://github.com/folke/noice.nvim)
+- [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
+- [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
 
 ### LSP
 
 - [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
 - [ ] addvanced Typescript setup
 
-### AutoComplete / Snippets:
-
-- [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
-
 ### Helpers:
 
 - [ ] get count of highlighted text/words search (to be able to get info on that line)
 
-  > **word** `(ghost text) 1/3`
+> **word** `(ghost text) 1/3`
 
 - [ ] translate typescript errors
 
@@ -53,10 +53,10 @@
 - [ ] have basic terminal setup
 - [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
 
-## Thing to check out
+### Status line:
 
-- [ ] [Dropbar](https://github.com/Bekaboo/dropbar.nvim)
-- [ ] [eotest](https://github.com/nvim-neotest/neotest)
-- [ ] [noice](https://github.com/folke/noice.nvim)
-- [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
-- [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
+[ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+
+### AutoComplete / Snippets:
+
+[ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
