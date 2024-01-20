@@ -2,62 +2,138 @@
 
 ### Package Manager
 
-- lazy.nvim
+- [lazy.nvim]()
 
-### Git
+### LSP:
 
-- gitsigns.nvim
-- lazygit.nvim
+[x] keymaps - check out `plugins/lsp/on_attach.lua`
 
-### LSP, Format, Linting
+[x] supported LSP - check out `plugins/lsp/init.lua`
 
-- mason.nvim
-- mason-lspconfig.nvim
-- nvim-lspconfig
-- neodev.nvim
+```lua
+ensure_installed = {
+    "lua_ls",
+    "bashls",
+    "cssls",
+    "dockerls",
+    "emmet_ls",
+    "html",
+    "intelephense",
+    "svelte",
+    "tailwindcss",
+    "tsserver",
+    "jsonls",
+},
 
-- conform.nvim
-- nvim-lint
+```
 
-### Autocomplete
+[x] additional dependencies - check out `plugins/lsp/init.lua`
 
-- nvim-cmp
+```lua
+	dependencies = {
+		"williamboman/mason.nvim",
+		"neovim/nvim-lspconfig",
+		"hrsh7th/cmp-nvim-lsp",
+		"b0o/SchemaStore.nvim",
+		{ "folke/neodev.nvim", opts = {} },
+	},
+```
 
-- cmp-buffer
-- cmp-nvim-lsp
-- cmp-nvim-lua
-- cmp-path
-- cmp_luasnip
-- friendly-snippets
-- LuaSnip
-- lspkind.nvim
+### AutoComplete / Snippets:
 
-### AI
+[x] `hrsh7th/nvim-cmp`
 
-- codeium.nvim
-- copilot-cmp
-- copilot.lua
+```lua
+{
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "onsails/lspkind.nvim",
+        {
+            "Exafunction/codeium.nvim",
+            config = function()
+                require("codeium").setup({})
+            end,
+        },
 
-### Search
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = {
+                "zbirenbaum/copilot.lua",
+                config = function()
+                    require("copilot").setup({
+                        suggestion = { enabled = false },
+                        panel = { enabled = false },
+                        filetypes = {
+                            markdown = true,
+                            help = true,
+                        },
+                    })
+                end,
+            },
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+        },
+    },
+}
+```
 
-- telescope-fzf-native.nvim
-- telescope-live-grep-args.nvim
-- telescope.nvim
-- smart-open.nvim
-- sqlite.lua
+### Comments
 
-### Helpers & Other Tools
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+- [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
+- [folke/todo-comments.nvim]()
 
-- plenary.nvim
-- mini.bufremove
-- todo-comments.nvim
-- mini.pairs
-- which-key.nvim
+### Format and Lint
 
-- trouble.nvim
-- nvim-treesitter
-- nvim-treesitter-textobjects
+- [stevearc/conform.nvim]()
+- [nvim-lint]()
+
+### Syntax Highlighting:
+
+- [nvim-treesitter/nvim-treesitter]()
+
+### Git:
+
+- [lewis6991/gitsigns.nvim]()
+- [kdheepak/lazygit.nvim]()
+
+### Session manager:
+
+- [folke/persistence.nvim]()
+
+### Navigation:
+
+- [nvim-telescope/telescope.nvim]()
+- [nvim-telescope/telescope-live-grep-args.nvim]()
+- [nvim-telescope/telescope-fzf-native.nvim]()
+- [danielfalk/smart-open.nvim]()
+- [Netrw]() - built in
 
 ### Colorscheme
 
-● tokyonight.nvim
+- [catppuccin/nvim]()
+- [folke/tokyonight.nvim]()
+
+### Status line:
+
+- [nvim-lualine/lualine.nvim]()
+
+### Startup:
+
+- [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+
+### Other Tools
+
+- [ mini.bufremove ]()
+- [todo-comments.nvim ]()
+- [ mini.pairs ]()
+- [ which-key.nvim ]()
+- [ trouble.nvim ]()

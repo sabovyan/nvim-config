@@ -2,118 +2,141 @@
 
 ## Main Areas to work on:
 
-| In Buffer / Coding | Outside Buffer / Editor | Comments                                                                                                      |
-| ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
-| LSP                | Treesitter              | _maybe treesitter should be part of LSP ? like each language should load/install its syntax witnin LSP setup_ |
-| AutoComplete       | Colorscheme             |                                                                                                               |
-| Format             | Git                     | _find a good plugin to wok with commits PR's diff etc_                                                        |
-| Lint               | Sessions                |                                                                                                               |
-| Comments           | Netrw                   |                                                                                                               |
-| Cursorline         | keymaps                 |                                                                                                               |
-|                    | startup                 |                                                                                                               |
-|                    | terminal                |                                                                                                               |
-
-## Inside buffer aka Coding
+| In Buffer / Coding | Outside Buffer / Editor | Comments                                                                                         |
+| ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| LSP                | Treesitter              | _maybe treesitter should be part of LSP ? Each language should load its syntax witnin LSP setup_ |
+| AutoComplete       | Colorscheme             |                                                                                                  |
+| Format             | Git                     | _find a good plugin to wok with commits PR's diff etc_                                           |
+| Lint               | Sessions                |                                                                                                  |
+| Comments           | Netrw                   |                                                                                                  |
+| Cursorline         | keymaps                 |                                                                                                  |
+|                    | startup                 |                                                                                                  |
+|                    | terminal                |                                                                                                  |
 
 ### LSP:
 
-- [x] keymps for LSP
-- [ ] setup eslint and prettier in a way that when eslint and prettier config is available in the project, it uses that config to format. And when it is not there it should use prettier as a formatter.
-- [x] jsonls SchemaStore.nvim Note, this provides schemas for jsonls but still depends on lspconfig.
-- [ ] addvanced Typescript setup
-- [x] _(not possible)_ fix go to definition: it should go to definition of the symbol under the cursor and place that line in the middle of the screen
-- [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
+[x] keymaps - check out `plugins/lsp/on_attach.lua`
+
+[x] supported LSP - check out `plugins/lsp/init.lua`
+
+```lua
+ensure_installed = {
+    "lua_ls",
+    "bashls",
+    "cssls",
+    "dockerls",
+    "emmet_ls",
+    "html",
+    "intelephense",
+    "svelte",
+    "tailwindcss",
+    "tsserver",
+    "jsonls",
+},
+
+```
+
+[x] additional dependencies - check out `plugins/lsp/init.lua`
+
+```lua
+	dependencies = {
+		"williamboman/mason.nvim",
+		"neovim/nvim-lspconfig",
+		"hrsh7th/cmp-nvim-lsp",
+		"b0o/SchemaStore.nvim",
+		{ "folke/neodev.nvim", opts = {} },
+	},
+```
 
 ### AutoComplete / Snippets:
 
-- [x] order autocomplete groups
-- [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+[x] `hrsh7th/nvim-cmp`
 
-### Helpers:
+```lua
+{
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "onsails/lspkind.nvim",
+        {
+            "Exafunction/codeium.nvim",
+            config = function()
+                require("codeium").setup({})
+            end,
+        },
 
-- [ ] get count of highlighted text/words search (to be able to get info on that line)
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = {
+                "zbirenbaum/copilot.lua",
+                config = function()
+                    require("copilot").setup({
+                        suggestion = { enabled = false },
+                        panel = { enabled = false },
+                        filetypes = {
+                            markdown = true,
+                            help = true,
+                        },
+                    })
+                end,
+            },
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+        },
+    },
+}
+```
 
-  > **word** `(ghost text) 1/3`
+### Comments
 
-- [ ] translate typescript errors
-
-- [x] Comments
-  - [x] https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-  - [x] https://github.com/numToStr/Comment.nvim
-  - [x] make sure that it will work with tsx files
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+- [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
+- [folke/todo-comments.nvim]()
 
 ### Format:
 
-- [ ] make format work faster
+- [stevearc/conform.nvim]()
 
-## Outside buffer aka Editor
+### Syntax Highlighting:
 
-### Note Taking
-
-- [ ] add not taking plugin
-- [ ] https://github.com/vuki656/package-info.nvim - show packages updates in package.json file
-      not sure where does this package belongs
-
-### Treesitter:
-
-- [x] setup treesitter
-- [ ] _(optional)_ setup treesitter objects
+- [nvim-treesitter/nvim-treesitter]()
 
 ### Git:
 
-- [x] setup gitsigns
-- [x] setkup lazygit
-- [ ] check out gh.nvim https://github.com/ldelossa/gh.nvim?tab=readme-ov-file
-- [ ] setup to show git commits for one file and view diffs
+- [lewis6991/gitsigns.nvim]()
+- [kdheepak/lazygit.nvim]()
 
 ### Session manager:
 
-- [x] // check out `:h Session`
-      it could be better to save session every time on closing and have a shortcut that will open that session
-      Also it's possible that the solution is in shada file
-      more info here: https://neovim.io/doc/user/usr_21.html#21.3
+- [folke/persistence.nvim]()
 
-### Navigation within the file:
+### Navigation:
 
-### Telescope:
+- [nvim-telescope/telescope.nvim]()
+- [nvim-telescope/telescope-live-grep-args.nvim]()
+- [nvim-telescope/telescope-fzf-native.nvim]()
+- [danielfalk/smart-open.nvim]()
+- [Netrw]() - built in
 
-- [x] add telescope
-- [x] add keymaps
-- [x] handle pathname that shows up in telescope
-- [x] change coloescheme for Telescope
-- [ ] add `.env.*` to be searched by telescope
+### Colorscheme
 
-### netrw:
-
-- [x] setup file manipulation commands (copy, move, delete, **rename**) in netrw (won't do it)
-- [x] setup netrw to opend in a prefered directory. you should find the closest directory that contains package.json
-  - [x] also have option that will open the root directory
-- [ ] fix netrw keymaps to be more intuitive
-
-### Terminal
-
-- [ ] have basic terminal setup
-- [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
-
-### Colorscheme:
-
-- [x] setup colorscheme
-- [x] setup colorscheme for Telescope
+- [catppuccin/nvim]()
+- [folke/tokyonight.nvim]()
 
 ### Status line:
 
-- [x] should display file name
-- [x] could be great to show it on top of the screen - _not possible_
-- [x] should show current file saved/not save status
-
-### Keymaps:
-
-- [x] buffer management `<leader> + bd`
-- [x] window management `ctrl + h/j/k/l`
+- [nvim-lualine/lualine.nvim]()
 
 ### Startup:
 
-- [x] https://github.com/nvimdev/dashboard-nvim
+- [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 
 # V2 - TODO
 
@@ -128,3 +151,48 @@
 - [ ] [noice](https://github.com/folke/noice.nvim)
 - [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
 - [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
+
+### LSP
+
+- [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
+- [ ] addvanced Typescript setup
+
+### AutoComplete / Snippets:
+
+- [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+
+### Helpers:
+
+- [ ] get count of highlighted text/words search (to be able to get info on that line)
+
+  > **word** `(ghost text) 1/3`
+
+- [ ] translate typescript errors
+
+### Note Taking
+
+- [ ] add not taking plugin
+- [ ] https://github.com/vuki656/package-info.nvim - show packages updates in package.json file
+      not sure where does this package belongs
+
+### Treesitter:
+
+- [ ] _(optional)_ setup treesitter objects
+
+### Git:
+
+- [ ] check out gh.nvim https://github.com/ldelossa/gh.nvim?tab=readme-ov-file
+- [ ] setup to show git commits for one file and view diffs
+
+### Navigation within the file:
+
+- [ ] add `.env.*` to be searched by telescope
+
+### netrw:
+
+- [ ] fix netrw keymaps to be more intuitive especially for keymaps that are used for file management and shortcut for `A` to add file not the built in behavior
+
+### Terminal
+
+- [ ] have basic terminal setup
+- [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
