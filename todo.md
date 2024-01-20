@@ -1,4 +1,4 @@
-# TODO
+# TODO - NeoVim Setup
 
 ## Main Areas to work on:
 
@@ -33,7 +33,7 @@
 
 - [ ] get count of highlighted text/words search (to be able to get info on that line)
 
-> **word** `(ghost text) 1/3`
+  > **word** `(ghost text) 1/3`
 
 - [ ] translate typescript errors
 
@@ -68,9 +68,7 @@
 
 ### Session manager:
 
-- [ ] check out shada file
-- [ ] check out how to save view
-- [ ] // check out `:h Session`
+- [x] // check out `:h Session`
       it could be better to save session every time on closing and have a shortcut that will open that session
       Also it's possible that the solution is in shada file
       more info here: https://neovim.io/doc/user/usr_21.html#21.3
@@ -130,4 +128,3 @@
 - [ ] [noice](https://github.com/folke/noice.nvim)
 - [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
 - [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
-
