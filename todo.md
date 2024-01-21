@@ -2,7 +2,7 @@
 
 ## General
 
-[x] rearrange plugins in a way that they are grouped by their purpose
+[ ] rearrange plugins in a way that they are grouped by their purpose
 
 ## Thing to check out
 
@@ -22,8 +22,6 @@
 
 > **word** `(ghost text) 1/3`
 
-- [ ] translate typescript errors
-
 ### Note Taking
 
 - [ ] add not taking plugin
@@ -42,6 +40,10 @@
 - [ ] have basic terminal setup
 - [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
 
+### hlpers:
+
+- [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
+
 ### Treesitter:
 
 - [ ] _(optional)_ setup treesitter objects
@@ -58,3 +60,17 @@
 ### Status line:
 
 [ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+
+### Homemade Plugins:
+
+1. [ ] Spell checker as it is done in VS Code
+
+2. [ ] git commit diff view
+       For an open buffer show the list of commits and on selection show the diff for that commit
+
+3. [ ] translate typescript errors. references:
+
+   - https://github.com/mattpocock/ts-error-translator
+   - https://github.com/yoavbls/pretty-ts-errors
+
+- [ ] create a plugin to do a code review in the editor
