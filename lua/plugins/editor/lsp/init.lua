@@ -84,6 +84,28 @@ return {
 					},
 				})
 			end,
+
+			["eslint"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.eslint.setup({
+					capabilities = capabilities,
+					on_attach = function(_, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
+
+					settings = {
+						workingDirectory = { mode = "auto" },
+						codeActionOnSave = {
+							enable = true,
+							mode = "all",
+						},
+						format = true,
+					},
+				})
+			end,
 		})
 	end,
 }
