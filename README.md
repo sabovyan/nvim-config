@@ -139,3 +139,4 @@ ensure_installed = {
 - [ mini.pairs ]()
 - [ which-key.nvim ]()
 - [ trouble.nvim ]()
+- [package-info.nvim](https://github.com/vuki656/package-info.nvim)

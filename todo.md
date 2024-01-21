@@ -12,10 +12,9 @@
 - [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
 - [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
 
-### LSP
+### netrw:
 
-- [ ] think about restructuring of the lsp config in a way that every language server has it's own config file
-- [ ] addvanced Typescript setup
+- [ ] fix netrw keymaps to be more intuitive especially for keymaps that are used for file management and shortcut for `A` to add file not the built in behavior
 
 ### Helpers:
 
@@ -28,12 +27,6 @@
 ### Note Taking
 
 - [ ] add not taking plugin
-- [ ] https://github.com/vuki656/package-info.nvim - show packages updates in package.json file
-      not sure where does this package belongs
-
-### Treesitter:
-
-- [ ] _(optional)_ setup treesitter objects
 
 ### Git:
 
@@ -44,19 +37,24 @@
 
 - [ ] add `.env.*` to be searched by telescope
 
-### netrw:
-
-- [ ] fix netrw keymaps to be more intuitive especially for keymaps that are used for file management and shortcut for `A` to add file not the built in behavior
-
 ### Terminal
 
 - [ ] have basic terminal setup
 - [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
 
-### Status line:
+### Treesitter:
 
-[ ] _Optional:_ Replace nvim-lualine/lualine.nvim
+- [ ] _(optional)_ setup treesitter objects
 
 ### AutoComplete / Snippets:
 
 [ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+
+## LSP
+
+- [ ] _(optional)_ think about restructuring of the lsp config in a way that every language server has it's own config file
+- [ ] _(optional)_ addvanced Typescript setup
+
+### Status line:
+
+[ ] _Optional:_ Replace nvim-lualine/lualine.nvim
