@@ -1,6 +1,9 @@
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+vim.o.splitbelow = true
+vim.o.splitright = true
+
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -46,3 +49,5 @@ vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
+
+vim.o.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
