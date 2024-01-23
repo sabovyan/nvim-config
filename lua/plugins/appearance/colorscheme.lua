@@ -102,7 +102,45 @@ return {
 				-- 			},
 				-- 		},
 			})
+
+			-- get catppuccin color style
+			local function get_current_colorscheme()
+				local colorscheme = vim.g.colors_name
+				local splitted = {}
+
+				for part in string.gmatch(colorscheme, "([^-]+)") do
+					table.insert(splitted, part)
+				end
+
+				local style = splitted[2]
+				local colors = require("catppuccin.palettes").get_palette(style)
+
+				return colors
+			end
+
+			-- local insert_color = get_current_colorscheme().surface1
 			--
+			-- local reset_color = get_current_colorscheme().surface0
+			--
+			-- local change_cursorline_color = function(color)
+			-- 	get_current_colorscheme()
+			-- 	vim.cmd("highlight! CursorLine guibg=" .. color)
+			-- end
+			--
+			-- vim.api.nvim_create_autocmd("InsertEnter", {
+			-- 	callback = function()
+			-- 		change_cursorline_color(insert_color)
+			-- 	end,
+			-- 	pattern = "*",
+			-- })
+			--
+			-- vim.api.nvim_create_autocmd("InsertLeave", {
+			-- 	callback = function()
+			-- 		change_cursorline_color(reset_color)
+			-- 	end,
+			-- 	pattern = "*",
+			-- })
+
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
