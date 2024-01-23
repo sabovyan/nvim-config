@@ -107,13 +107,13 @@ return {
 				sources = cmp.config.sources({
 
 					{ name = "nvim_lsp", group_index = 1 },
-					{ name = "copilot", group_index = 2 },
-					{ name = "codeium", group_index = 2 },
-					{ name = "luasnip", group_index = 1 },
-					{ name = "path", gorud_index = 2 },
-					{ name = "nvim_lua", group_index = 1 },
+					{ name = "copilot", group_index = 2, max_item_count = 5 },
+					{ name = "codeium", group_index = 2, max_item_count = 5 },
+					{ name = "luasnip", group_index = 1, max_item_count = 5 },
+					{ name = "path", gorud_index = 2, max_item_count = 5 },
+					{ name = "nvim_lua", group_index = 1, max_item_count = 5 },
 				}, {
-					{ name = "buffer" },
+					{ name = "buffer", max_item_count = 5 },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
