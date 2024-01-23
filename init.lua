@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("configs")
+
 require("lazy").setup({
 	{ import = "plugins.appearance" },
 	{ import = "plugins.version_control" },
