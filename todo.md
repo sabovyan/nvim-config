@@ -1,8 +1,13 @@
 # TODO - NeoVim Setup
 
-## General
+## Knowledge
 
-[ ] rearrange plugins in a way that they are grouped by their purpose
+- check how spell works in nvim
+- check fugitive vim plugin
+
+## Setup
+
+- [ ] rearrange plugins in a way that they are grouped by their purpose
 
 ## Thing to check out
 
@@ -11,10 +16,11 @@
 - [ ] [noice](https://github.com/folke/noice.nvim)
 - [ ] [leap.nvim](https://github.com/ggandor/leap.nvim) **VS** [flash.nvim](https://github.com/folke/flash.nvim)
 - [ ] [vim-illuminate](https://github.com/RRethy/vim-illuminate) **VS** [mini.cursorword](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
+- [ ] check tree-sitter folding [link](https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding)
 
 ### netrw:
 
-- [ ] fix netrw keymaps to be more intuitive especially for keymaps that are used for file management and shortcut for `A` to add file not the built in behavior
+- [x] fix netrw keymaps to be more intuitive especially for keymaps that are used for file management and shortcut for `A` to add file not the built in behavior
 
 ### Helpers:
 
@@ -24,11 +30,16 @@
 
 ### Note Taking
 
-- [ ] add not taking plugin
+- [obsidian](https://github.com/epwalsh/obsidian.nvim)
+- [neorg](https://github.com/nvim-neorg/neorg)
+- [mind](https://github.com/phaazon/mind.nvim) _At least it might be the one that you need_ the original one is deperacted
+  saving a fork link [here](https://github.com/Selyss/mind.nvim)
+- also it could have greater to have an option without any third part integration
 
 ### Git:
 
-- [ ] check out gh.nvim https://github.com/ldelossa/gh.nvim?tab=readme-ov-file
+- [ ] check out [fugitive]()
+- [ ] check out [gh.nvim](https://github.com/ldelossa/gh.nvim?tab=readme-ov-file)
 - [ ] setup to show git commits for one file and view diffs
 
 ### Navigation within the file:
@@ -38,24 +49,24 @@
 ### Terminal
 
 - [ ] have basic terminal setup
-- [ ] have keymaps for terminal to open it on the buttom of the screen and as floating window
+- [ ] have keymaps for terminal to open it on the bottom of the screen and as floating window
 
-### hlpers:
+### helpers:
 
 - [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
 
-### Treesitter:
+### Tree sitter:
 
-- [ ] _(optional)_ setup treesitter objects
+- [ ] _(optional)_ setup tree sitter objects
 
-### AutoComplete / Snippets:
+### Autocomplete / Snippets:
 
-[ ] **OPtional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+[ ] **Optional:** Add TailwindCSS colorizer CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
 
 ## LSP
 
 - [ ] _(optional)_ think about restructuring of the lsp config in a way that every language server has it's own config file
-- [ ] _(optional)_ addvanced Typescript setup
+- [ ] _(optional)_ advanced Typescript setup
 
 ### Status line:
 
@@ -68,9 +79,9 @@
 2. [ ] git commit diff view
        For an open buffer show the list of commits and on selection show the diff for that commit
 
-3. [ ] translate typescript errors. references:
+3. [ ] translate typescript errors. References:
 
    - https://github.com/mattpocock/ts-error-translator
    - https://github.com/yoavbls/pretty-ts-errors
 
-- [ ] create a plugin to do a code review in the editor
+4. [ ] _(just_an_idea)_ create a plugin to do a code review in the editor
