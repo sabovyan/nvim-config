@@ -67,6 +67,10 @@
 
 - [ ] _(optional)_ think about restructuring of the lsp config in a way that every language server has it's own config file
 - [ ] _(optional)_ advanced Typescript setup
+- [ ] add code actions for imports https://github.com/LazyVim/LazyVim/pull/2354/files
+  - [ ] check other available actions by tsserver
+- [ ] check file copy https://github.com/LazyVim/LazyVim/commit/eccf3b5e68035516c879b3e2b4d6bf8512c87976
+- [ ] add schemastore for yaml files
 
 ### Status line:
 

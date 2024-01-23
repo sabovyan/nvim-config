@@ -41,7 +41,7 @@ ensure_installed = {
 }
 ```
 
-### AutoComplete / Snippets:
+### Autocomplete / Snippets:
 
 - `hrsh7th/nvim-cmp`
 
