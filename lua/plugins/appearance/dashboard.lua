@@ -40,6 +40,32 @@ return {
 			vim.cmd("LazyGit")
 		end
 
+		local function get_neovim_version()
+			local version_info = vim.version()
+			local version_state = string.format(
+				"%s.%s.%s",
+				version_info.major,
+				version_info.minor,
+				version_info.patch
+			)
+
+			return version_state
+		end
+
+		local get_footer_info = function()
+			local stats = require("lazy").stats()
+			local loaded_plugins = stats.loaded
+			local total_plugins = stats.count
+			local laod_time = stats.real_cputime
+			return {
+				"",
+				"",
+				"",
+				"󱐋   plugins Loaded - " .. loaded_plugins .. "                ",
+				"󰆔   plugins averall - " .. total_plugins .. "                ",
+			}
+		end
+
 		require("dashboard").setup({
 			theme = "doom",
 			disable_move = true,
@@ -57,7 +83,7 @@ return {
 					"██████╔╝  ╚██████╔╝  ██║  ██║  ██║  ██║  ██████╔╝ ",
 					"╚═════╝    ╚═════╝   ╚═╝  ╚═╝  ╚═╝  ╚═╝  ╚═════╝  ",
 					"",
-					"",
+					"                                  " .. get_neovim_version(),
 					"",
 					"",
 					"",
@@ -145,7 +171,7 @@ return {
 						action = quit,
 					},
 				},
-				footer = {},
+				footer = get_footer_info(),
 			},
 		})
 	end,
