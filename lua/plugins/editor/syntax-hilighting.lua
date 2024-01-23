@@ -9,7 +9,12 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
+					-- NOTE: required by nvim-treesitter
 					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+
 					"tsx",
 					"json",
 					"javascript",
@@ -23,11 +28,11 @@ return {
 					"svelte",
 					"graphql",
 					"bash",
-					"vim",
 					"gitignore",
-					"query",
-					"vimdoc",
 					"dockerfile",
+
+					-- NOTE: project specific languages
+					"php",
 				},
 				highlight = {
 					enable = true,
