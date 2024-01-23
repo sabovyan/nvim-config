@@ -51,3 +51,6 @@ vim.o.expandtab = true
 vim.o.shiftwidth = 2
 
 vim.o.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+
+-- to hilight current line
+vim.o.cursorline = true
