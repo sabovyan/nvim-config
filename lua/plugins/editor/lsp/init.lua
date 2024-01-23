@@ -21,6 +21,7 @@ return {
 				"bashls",
 				"cssls",
 				"dockerls",
+				"eslint",
 				"emmet_ls",
 				"html",
 				"intelephense",
