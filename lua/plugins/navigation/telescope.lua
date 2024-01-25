@@ -72,6 +72,7 @@ return {
 					show_scores = true,
 					match_algorithm = "fzy",
 					open_buffer_indicators = { previous = "👀", others = "🙈" },
+					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
 				},
 			},
 			pickers = {
