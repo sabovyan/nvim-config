@@ -76,7 +76,7 @@
 
 [ ] _Optional:_ Replace nvim-lualine/lualine.nvim
 
-### Homemade Plugins:
+### Homemade Plugins or Ideas:
 
 1. [ ] Spell checker as it is done in VS Code
 
@@ -89,3 +89,7 @@
    - https://github.com/yoavbls/pretty-ts-errors
 
 4. [ ] _(just_an_idea)_ create a plugin to do a code review in the editor
+
+### Done
+
+[x] A custom keymap to open help for keyword under the cursor

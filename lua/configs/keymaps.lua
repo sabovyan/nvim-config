@@ -148,6 +148,7 @@ vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 -- to keei the cursor centered
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
+vim.keymap.set("n", "<C-o>", "<C-o>zz", { silent = true })
 
 --
 vim.keymap.set("n", "<leader>e", function()
