@@ -167,3 +167,20 @@ end, { silent = true, desc = "[O]pen [N]etrw in [C]urrent [D]ir" })
 vim.keymap.set("n", "<leader>cc", function()
 	vim.cmd("let @+ = expand('%:p')")
 end, { silent = true, desc = "[C]opy [F]ile [P]ath" })
+
+-- NOTE: test
+
+vim.keymap.set("n", "<leader>?", function()
+	local fidget_found, fidget = pcall(require, "fidget")
+	local word = vim.fn.expand("<cword>")
+	word = word:lower()
+
+	local ok = pcall(vim.cmd.help, word)
+	if not ok then
+		if fidget_found then
+			fidget.notify("No help for " .. word, vim.log.levels.INFO, { title = "Help" })
+		else
+			print("No help for " .. word)
+		end
+	end
+end, { desc = "help", silent = true })
