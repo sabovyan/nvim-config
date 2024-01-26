@@ -2,6 +2,21 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+		local function branch_name()
+			local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+
+			if branch ~= "" then
+				if #branch > 10 then
+					local shortened_branch = string.sub(branch, 1, 10)
+					return " " .. shortened_branch .. "..."
+				else
+					return " " .. branch
+				end
+			else
+				return ""
+			end
+		end
+
 		local function get_file_type()
 			local extension = vim.fn.expand("%:e")
 			local filetype = vim.fn.expand("%:t")
@@ -16,7 +31,7 @@ return {
 		end
 		require("lualine").setup({
 			sections = {
-				lualine_b = { "branch" },
+				lualine_b = { branch_name },
 				lualine_c = {
 					{
 						"filename",
