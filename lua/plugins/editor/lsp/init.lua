@@ -19,16 +19,21 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"bashls",
-				"cssls",
 				"dockerls",
+				-- frotnend
 				"eslint",
+				"cssls",
 				"emmet_ls",
 				"html",
-				"intelephense",
 				"svelte",
 				"tailwindcss",
 				"tsserver",
+				-- php
+				"intelephense",
+				-- json and yaml
 				"jsonls",
+				-- toml files
+				"taplo",
 			},
 		})
 
@@ -64,6 +69,16 @@ return {
 							},
 							validate = { enable = true },
 						},
+						yaml = {
+							schemaStore = {
+								-- You must disable built-in schemaStore support if you want to use
+								-- this plugin and its advanced options like `ignore`.
+								enable = false,
+								-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+								url = "",
+							},
+							schemas = require("schemastore").yaml.schemas(),
+						},
 					},
 				})
 			end,
@@ -95,6 +110,18 @@ return {
 							buffer = bufnr,
 							command = "EslintFixAll",
 						})
+
+						vim.g.disable_autoformat = false
+
+						vim.keymap.set("n", "<leader>cf", function()
+							vim.cmd("EslintFixAll")
+							local fidget = require("fidget")
+							fidget.notify("Format with eslint", vim.log.levels.INFO)
+						end, { noremap = true, silent = true, desc = "Format with eslint" })
+
+						vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+							vim.cmd("EslintFixAll")
+						end, { desc = "Format current buffer with LSP" })
 					end,
 
 					settings = {
