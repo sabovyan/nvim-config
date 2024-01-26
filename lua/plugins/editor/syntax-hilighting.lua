@@ -17,6 +17,7 @@ return {
 
 					"tsx",
 					"json",
+					"jsdoc",
 					"javascript",
 					"typescript",
 					"yaml",
