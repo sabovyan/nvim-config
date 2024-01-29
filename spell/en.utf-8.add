@@ -13,3 +13,7 @@ config
 Todo
 tsserver
 keymap
+eslint
+tsup
+vitest
+dev
