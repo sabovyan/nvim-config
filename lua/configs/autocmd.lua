@@ -33,6 +33,7 @@ end, {
 	desc = "Re-enable autoformat-on-save",
 })
 
+-- treat .swcrc as json to use json syntax highlighting and jsonls for autocompletion
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = ".swcrc",
 	command = "set filetype=json",
