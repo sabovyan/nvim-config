@@ -38,3 +38,24 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = ".swcrc",
 	command = "set filetype=json",
 })
+
+-- Jump to last edit position on opening file
+-- NOTE: should be checked
+-- vim.cmd([[
+--   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+-- ]])
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+
+	pattern = "*",
+	desc = "Open file at the last position it was edited earlier",
+	callback = function()
+		local mark = vim.api.nvim_buf_get_mark(0, '"')
+		if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+			vim.api.nvim_win_set_cursor(0, mark)
+			vim.schedule(function()
+				vim.cmd("normal! zz")
+			end)
+		end
+	end,
+})
