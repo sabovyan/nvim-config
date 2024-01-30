@@ -6,11 +6,7 @@ return {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
+		opts = {},
 		config = function()
 			local wk = require("which-key")
 
@@ -29,18 +25,23 @@ return {
 		"echasnovski/mini.surround",
 		version = "*",
 		opts = {},
-		-- config = function()
-		-- 	local surround = require("surround")
-		-- 	surround.setup()
-		-- end,
 	},
 
-	--- INFO: comments
+	-- INFO comments
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			highlight = {
+				before = "fg", -- "fg" or "bg" or empty
+				keyword = "wide",
+				pattern = [[.*<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
+			},
+			search = {
+				pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+			},
+		},
 	},
 
 	-- INFO: auto pairs
