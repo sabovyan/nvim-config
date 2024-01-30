@@ -16,7 +16,10 @@ return {
 	-- end,
 
 	config = function()
-		require("package-info").setup()
+		require("package-info").setup({
+			autostart = false,
+			hide_up_to_date = true,
+		})
 
 		-- Show dependency versions
 		vim.keymap.set(
