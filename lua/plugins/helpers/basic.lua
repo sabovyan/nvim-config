@@ -35,7 +35,7 @@ return {
 		opts = {
 			highlight = {
 				before = "fg", -- "fg" or "bg" or empty
-				keyword = "wide",
+				keyword = "wide_fg",
 				pattern = [[.*<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
 			},
 			search = {
