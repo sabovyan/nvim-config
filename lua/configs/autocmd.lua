@@ -59,3 +59,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = "*",
+	desc = "Disable insert mode for readonly files",
+	callback = function()
+		local bufnr = vim.api.nvim_get_current_buf()
+
+		local is_readonly = vim.bo[bufnr].readonly
+
+		if is_readonly then
+			vim.cmd("setlocal nomodifiable")
+		end
+	end,
+})
