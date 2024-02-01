@@ -16,4 +16,11 @@ M.install_LSP = function(packages)
 	end
 end
 
+---@param path string
+---@return string
+function M.get_path_last_part(path)
+	-- get last part of path
+	return path:match("^.+/(.+)$")
+end
+
 return M
