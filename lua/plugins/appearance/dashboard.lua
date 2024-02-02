@@ -56,7 +56,6 @@ return {
 			local stats = require("lazy").stats()
 			local loaded_plugins = stats.loaded
 			local total_plugins = stats.count
-			local laod_time = stats.real_cputime
 			return {
 				"",
 				"",
@@ -72,16 +71,24 @@ return {
 			config = {
 				header = {
 					"",
+					"Srinivasa Ramanujan (/ˈsriːnɪvɑːsə rɑːˈmɑːnʊdʒən; 22 December 1887 – 26 April 1920)",
+					"Though he had almost no formal training in pure mathematics,",
+					"he made substantial contributions to mathematical analysis, number theory, infinite series, and continued fractions.",
 					"",
 					"",
+					"   learning -                         " .. DESCRIPTION_NAME_SUFFIX,
+					"",
+					"󱃖   codeing  -                         " .. DESCRIPTION_NAME_SUFFIX,
+					"",
+					"   personal -                         " .. DESCRIPTION_NAME_SUFFIX,
 					"",
 					"",
-					"██████╗    ██████╗    █████╗   ██████╗   ██████╗  ",
-					"██╔══██╗  ██╔═══██╗  ██╔══██╗  ██╔══██╗  ██╔══██╗ ",
-					"██████╔╝  ██║   ██║  ███████║  ██████╔╝  ██║  ██║ ",
-					"██╔══██╗  ██║   ██║  ██╔══██║  ██╔══██╗  ██║  ██║ ",
-					"██████╔╝  ╚██████╔╝  ██║  ██║  ██║  ██║  ██████╔╝ ",
-					"╚═════╝    ╚═════╝   ╚═╝  ╚═╝  ╚═╝  ╚═╝  ╚═════╝  ",
+					-- "██████╗    ██████╗    █████╗   ██████╗   ██████╗  ",
+					-- "██╔══██╗  ██╔═══██╗  ██╔══██╗  ██╔══██╗  ██╔══██╗ ",
+					-- "██████╔╝  ██║   ██║  ███████║  ██████╔╝  ██║  ██║ ",
+					-- "██╔══██╗  ██║   ██║  ██╔══██║  ██╔══██╗  ██║  ██║ ",
+					-- "██████╔╝  ╚██████╔╝  ██║  ██║  ██║  ██║  ██████╔╝ ",
+					-- "╚═════╝    ╚═════╝   ╚═╝  ╚═╝  ╚═╝  ╚═╝  ╚═════╝  ",
 					"",
 					"                                  " .. get_neovim_version(),
 					"",
