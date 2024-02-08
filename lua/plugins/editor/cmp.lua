@@ -104,8 +104,8 @@ return {
 						fallback()
 					end,
 				}),
-				sources = cmp.config.sources({
 
+				sources = cmp.config.sources({
 					{ name = "nvim_lsp", group_index = 1 },
 					{ name = "copilot", group_index = 2, max_item_count = 5 },
 					{ name = "codeium", group_index = 2, max_item_count = 5 },
