@@ -128,7 +128,7 @@ vim.keymap.set("n", "<leader>mm", "<cmd>Mason<cr>", { desc = "[O]pen Mason" })
 
 -- windows
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+vim.keymap.set("n", "<leader>wd", "<cmd>windo close<cr>", { desc = "Delete window", remap = true })
 -- map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 -- map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 -- map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
