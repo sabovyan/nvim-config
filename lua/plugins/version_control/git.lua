@@ -1,4 +1,11 @@
 return {
+	{
+		"dlvhdr/gh-blame.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+		keys = {
+			{ "<leader>gb", "<cmd>GhBlameCurrentLine<cr>", desc = "GitHub Blame Current Line" },
+		},
+	},
 	-- git signs highlights text that has changed since the list
 	-- git commit, and also lets you interactively stage & unstage
 	-- hunks in a commit.
