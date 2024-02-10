@@ -26,6 +26,7 @@ return {
 					which_key = false,
 					headlines = true,
 					lsp_trouble = true,
+					notifier = true,
 					telescope = {
 						enabled = true,
 						style = "nvchad",
