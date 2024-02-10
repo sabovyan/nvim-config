@@ -115,8 +115,6 @@ return {
 
 						vim.keymap.set("n", "<leader>cf", function()
 							vim.cmd("EslintFixAll")
-							local fidget = require("fidget")
-							fidget.notify("Format with eslint", vim.log.levels.INFO)
 						end, { noremap = true, silent = true, desc = "Format with eslint" })
 
 						vim.api.nvim_buf_create_user_command(bufnr, "Format", function()

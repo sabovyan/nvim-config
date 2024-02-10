@@ -40,8 +40,6 @@ return {
 			mode = { "n", "v" },
 			"<leader>cf",
 			function()
-				require("fidget").notify("Conform Formatting...")
-
 				require("conform").format({
 					timeout_ms = 3000,
 					async = true,
