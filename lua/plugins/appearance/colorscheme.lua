@@ -55,12 +55,16 @@ return {
 						base = "#161823",
 					},
 				},
-				custom_highlights = function(c)
+				custom_highlights = function(colors)
 					return {
 
 						-- tree-sitter
-						["@variable"] = { fg = c.yellow },
-						["@none"] = { fg = c.overlay2, style = { "italic" } },
+						TSNone = { fg = colors.overlay2, style = { "italic", "underline" } },
+						TSTagAttribute = { fg = colors.rosewater, style = { "italic" } },
+
+						["@tag.attribute"] = { link = "TSTagAttribute" },
+						["@tag.attribute.tsx"] = { link = "TSTagAttribute" },
+						["@none"] = { link = "TSNone" },
 					}
 				end,
 			})
