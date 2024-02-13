@@ -56,12 +56,19 @@ return {
 			local stats = require("lazy").stats()
 			local loaded_plugins = stats.loaded
 			local total_plugins = stats.count
+			local updates = require("lazy.status").updates()
+			if updates ~= false then
+				updates = "󰆔   updates - " .. updates
+			else
+				updates = ""
+			end
+
 			return {
 				"",
 				"",
-				"",
 				"󱐋   plugins Loaded - " .. loaded_plugins .. "                ",
-				"󰆔   plugins averall - " .. total_plugins .. "                ",
+				"󰚥   plugins averall - " .. total_plugins .. "                ",
+				updates .. "                         ",
 			}
 		end
 
