@@ -20,4 +20,11 @@ require("lazy").setup({
 	{ import = "plugins.navigation" },
 	{ import = "plugins.editor" },
 	{ import = "plugins.helpers" },
+}, {
+	install = {
+		-- install missing plugins on startup. This doesn't increase startup time.
+		missing = true,
+		-- try to load one of these colorschemes when starting an installation during startup
+		colorscheme = { "catppuccin", "habamax" },
+	},
 })
