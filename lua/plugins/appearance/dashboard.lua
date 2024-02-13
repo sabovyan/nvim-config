@@ -29,7 +29,7 @@ return {
 		end
 
 		local function open_last_session()
-			require("persistence").load({ last = true })
+			require("persistence").load()
 		end
 
 		local function open_explorer()
