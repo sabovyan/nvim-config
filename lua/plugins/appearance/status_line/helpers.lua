@@ -76,7 +76,7 @@ function M.get_file_name()
 
 	local icon = get_file_icon()
 
-	return icon .. " " .. file_name .. " " .. modifiedStatus
+	return icon .. "  " .. file_name .. " " .. modifiedStatus
 end
 
 -- get vim mode
