@@ -42,15 +42,21 @@ function M.branch_name()
 	end
 end
 
-function M.get_file_type()
+local function get_file_icon()
 	local extension = vim.fn.expand("%:e")
 	local filetype = vim.fn.expand("%:t")
 
 	local icon = require("nvim-web-devicons").get_icon(filetype, extension)
-
 	if icon == nil then
 		icon = "[ICON NOT FOUND]"
 	end
+	return icon
+end
+
+function M.get_file_type()
+	local extension = vim.fn.expand("%:e")
+
+	local icon = get_file_icon()
 
 	return extension .. " " .. icon
 end
@@ -68,7 +74,28 @@ function M.get_file_name()
 		file_name = "[No Name]"
 	end
 
-	return file_name .. " " .. modifiedStatus
+	local icon = get_file_icon()
+
+	return icon .. " " .. file_name .. " " .. modifiedStatus
+end
+
+-- get vim mode
+function M.get_vim_mode()
+	local mode = vim.fn.mode()
+	local modeMap = {
+		n = " NORMAL",
+		i = "  INSERT",
+		c = " COMMAND",
+		v = "󰒆 VISUAL",
+		V = "󰒆 VISUAL LINE",
+		[""] = "󰒆 VISUAL BLOCK",
+		R = " REPLACE",
+		s = "SELECT",
+		S = "SELECT LINE",
+		[""] = "SELECT BLOCK",
+	}
+
+	return modeMap[mode]
 end
 
 return M
