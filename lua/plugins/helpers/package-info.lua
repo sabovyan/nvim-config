@@ -7,14 +7,6 @@ return {
 	lazy = true,
 	ft = { "json" },
 
-	-- cond = function()
-	-- 	local file_name = vim.fn.expand("%:t")
-	-- 	if file_name == "package.json" then
-	-- 		return true
-	-- 	end
-	-- 	return false
-	-- end,
-
 	config = function()
 		require("package-info").setup({
 			autostart = false,
