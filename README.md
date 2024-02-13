@@ -1,4 +1,4 @@
-# Neovim Config
+# Neovim Config v1.0.0
 
 ### Package Manager
 
