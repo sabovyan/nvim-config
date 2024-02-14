@@ -53,6 +53,23 @@ local function get_file_icon()
 	return icon
 end
 
+local function get_file_name_with_parent_dirs()
+	local splitted_path = vim.fn.split(vim.fn.expand("%"), "/")
+	local len = #splitted_path
+
+	local short_path = ""
+
+	for count = 1, len - 2 do
+		local value = splitted_path[count]
+		local letter = string.sub(value, 1, 1)
+		short_path = short_path .. letter .. "/"
+	end
+
+	local asdf = short_path .. splitted_path[len - 1] .. "/" .. splitted_path[len]
+
+	return asdf
+end
+
 function M.get_file_type()
 	local extension = vim.fn.expand("%:e")
 
@@ -67,8 +84,7 @@ function M.get_file_name()
 	local file_name = vim.fn.expand("%:t")
 
 	if should_display_full_path(file_name) then
-		-- full path based on cw
-		local file_full_path = vim.fn.expand("%")
+		local file_full_path = get_file_name_with_parent_dirs()
 		file_name = file_full_path
 	elseif file_name == "" then
 		file_name = "[No Name]"
