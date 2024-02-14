@@ -57,6 +57,7 @@ return {
 				},
 				custom_highlights = function(colors)
 					return {
+						Folded = { fg = colors.yellow },
 
 						-- tree-sitter
 						TSNone = { fg = colors.overlay2, style = { "italic", "underline" } },
