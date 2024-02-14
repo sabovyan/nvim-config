@@ -54,3 +54,9 @@ vim.o.virtualedit = "block" -- Allow cursor to move where there is no text in vi
 
 -- to hilight current line
 vim.o.cursorline = true
+
+-- fold settings
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldcolumn = "auto"
+vim.opt.foldlevel = 20
