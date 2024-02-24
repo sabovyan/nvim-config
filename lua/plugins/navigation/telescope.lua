@@ -119,7 +119,11 @@ return {
 		nmap("<leader>gs", builtin.git_status, "[G]it [S]tatus")
 
 		-- Files and buffers
-		nmap("<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", "Buffers")
+		nmap(
+			"<leader><space>",
+			"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+			"Buffers"
+		)
 
 		local function find_files_by_workspace()
 			-- get current buffer's root directory
@@ -136,7 +140,7 @@ return {
 		nmap("<leader>ff", find_files_by_workspace, "[F]ind Files [B]y [W]orkspace")
 		nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
 		-- smart open
-		vim.keymap.set("n", "<leader><leader>", function()
+		vim.keymap.set("n", "<leader>fs", function()
 			require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
 		end, { noremap = true, silent = true, desc = "[S]mart [F]ile [S]earch" })
 
@@ -150,7 +154,11 @@ return {
 
 		nmap('<leader>s"', "<cmd>Telescope registers<cr>", "[R]egisters")
 		nmap("<leader>sa", "<cmd>Telescope autocommands<cr>", "Auto Commands")
-		nmap("<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffer")
+		nmap(
+			"<leader>sb",
+			"<cmd>Telescope current_buffer_fuzzy_find<cr>",
+			"[F]uzzy [F]ind in [B]uffer"
+		)
 		nmap("<leader>sC", "<cmd>Telescope colorscheme<cr>", "Colorscheme with preview")
 		nmap("<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", "Document diagnostics")
 		nmap("<leader>sD", "<cmd>Telescope diagnostics<cr>", "Workspace diagnostics")
@@ -191,9 +199,13 @@ return {
 			builtin.grep_string(opts)
 		end
 
-		nmap("<leader>sW", grep_current_word_in_root, "[W]ord in [R]oot [D]ir")
-		nmap("<leader>sw", grep_current_word_in_workspace, "[S]election [W]orkspace", "v")
-		nmap("<leader>sW", grep_current_word_in_root, "[S]election [R]oot [D]ir", "v")
+		nmap("<leader>sW", grep_current_word_in_root, "[W]ord in [R]oot [D]ir", { "v", "n" })
+		nmap(
+			"<leader>sw",
+			grep_current_word_in_workspace,
+			"[W]ord in [C]urrent [W]orkspace",
+			{ "v", "n" }
+		)
 
 		-- Enable telescope fzf native, if installed
 		pcall(telescope.load_extension, "fzf")
