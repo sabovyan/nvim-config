@@ -166,6 +166,16 @@ return {
 						action = open_last_session,
 					},
 					{
+						icon = append_empty_string("󰟶"),
+						icon_hl = "string",
+						desc = append_empty_string("Notes", DESCRIPTION_NAME_SUFFIX),
+						desc_hl = "string",
+						key = "t",
+						key_hl = "string",
+						key_format = " %s",
+						action = "Note",
+					},
+					{
 						icon = append_empty_string(""),
 						icon_hl = "Title",
 						desc = append_empty_string("Lazy Plugin Manager", DESCRIPTION_NAME_SUFFIX),
