@@ -1,5 +1,33 @@
 return {
 	{
+		"olimorris/onedarkpro.nvim",
+		priority = 1000, -- Ensure it loads first
+		config = function()
+			local color = require("onedarkpro.helpers")
+
+			local colors = color.get_colors()
+
+			require("onedarkpro").setup({
+				highlights = {
+					Comment = { italic = true },
+					Directory = { bold = true },
+					ErrorMsg = { italic = true, bold = true },
+
+					CursorLineNr = { fg = colors.orange },
+					Folded = { fg = colors.yellow },
+
+					-- tree-sitter
+					["@none"] = { fg = colors.comment, italic = true, underline = true },
+
+					["@punctuation.special.markdown"] = { fg = colors.cyan },
+					["@punctuation.special.checked"] = { fg = colors.green },
+				},
+			})
+
+			vim.cmd("colorscheme onedark")
+		end,
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
@@ -50,13 +78,9 @@ return {
 						},
 					},
 				},
-				color_overrides = {
-					mocha = {
-						base = "#181a1f",
-					},
-				},
 				custom_highlights = function(colors)
 					return {
+						CursorLineNr = { fg = colors.peach },
 						Folded = { fg = colors.yellow },
 
 						-- tree-sitter
@@ -66,49 +90,18 @@ return {
 						["@tag.attribute"] = { link = "TSTagAttribute" },
 						["@tag.attribute.tsx"] = { link = "TSTagAttribute" },
 						["@none"] = { link = "TSNone" },
+						["@markup.list.unchecked.markdown"] = { fg = colors.red },
+						["@markup.list.unchecked"] = { fg = colors.red },
+						["@markup.list.checked.markdown"] = { fg = colors.green },
+						["@markup.list.checked"] = { fg = colors.green },
+						["@markup.raw.block.markdown"] = { bg = colors.crust },
+						["@markup.raw.block"] = { bg = colors.crust },
+						["@markup.raw.delimiter"] = { bg = colors.crust },
 					}
 				end,
 			})
 
-			-- get catppuccin color style
-			local function get_current_colorscheme()
-				local colorscheme = vim.g.colors_name
-				local splitted = {}
-
-				for part in string.gmatch(colorscheme, "([^-]+)") do
-					table.insert(splitted, part)
-				end
-
-				local style = splitted[2]
-				local colors = require("catppuccin.palettes").get_palette(style)
-
-				return colors
-			end
-
-			-- local insert_color = get_current_colorscheme().surface1
-			--
-			-- local reset_color = get_current_colorscheme().surface0
-			--
-			-- local change_cursorline_color = function(color)
-			-- 	get_current_colorscheme()
-			-- 	vim.cmd("highlight! CursorLine guibg=" .. color)
-			-- end
-			--
-			-- vim.api.nvim_create_autocmd("InsertEnter", {
-			-- 	callback = function()
-			-- 		change_cursorline_color(insert_color)
-			-- 	end,
-			-- 	pattern = "*",
-			-- })
-			--
-			-- vim.api.nvim_create_autocmd("InsertLeave", {
-			-- 	callback = function()
-			-- 		change_cursorline_color(reset_color)
-			-- 	end,
-			-- 	pattern = "*",
-			-- })
-
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
