@@ -39,6 +39,7 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-emoji",
 			"onsails/lspkind.nvim",
 			{
 				"Exafunction/codeium.nvim",
@@ -107,11 +108,12 @@ return {
 
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", group_index = 1 },
+					{ name = "luasnip", group_index = 1, max_item_count = 5 },
+					{ name = "nvim_lua", group_index = 1, max_item_count = 5 },
 					{ name = "copilot", group_index = 2, max_item_count = 5 },
 					{ name = "codeium", group_index = 2, max_item_count = 5 },
-					{ name = "luasnip", group_index = 1, max_item_count = 5 },
 					{ name = "path", gorud_index = 2, max_item_count = 5 },
-					{ name = "nvim_lua", group_index = 1, max_item_count = 5 },
+					{ name = "emoji", group_index = 3, max_item_count = 2 },
 				}, {
 					{ name = "buffer", max_item_count = 5 },
 				}),
