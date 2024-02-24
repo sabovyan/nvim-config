@@ -27,15 +27,14 @@ end
 
 local M = {}
 
-function M.branch_name()
-	local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
-
+--- @param branch string
+function M.branch_name(branch)
 	if branch ~= "" then
 		if #branch > 10 then
 			local shortened_branch = string.sub(branch, 1, 10)
-			return " " .. shortened_branch .. "..."
+			return shortened_branch .. "..."
 		else
-			return " " .. branch
+			return branch
 		end
 	else
 		return ""

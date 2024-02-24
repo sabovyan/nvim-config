@@ -12,7 +12,12 @@ return {
 			sections = {
 				lualine_a = { helpers.get_vim_mode },
 				lualine_b = { helpers.get_file_name },
-				lualine_c = { helpers.branch_name },
+				lualine_c = {
+					{
+						"branch",
+						fmt = helpers.branch_name,
+					},
+				},
 				lualine_x = {},
 				lualine_y = {
 					{
