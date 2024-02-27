@@ -27,4 +27,9 @@ require("lazy").setup({
 		-- try to load one of these colorschemes when starting an installation during startup
 		colorscheme = { "catppuccin", "habamax" },
 	},
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = true,
+		notify = false,
+	},
 })
