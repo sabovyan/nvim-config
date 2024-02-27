@@ -55,4 +55,7 @@ return {
 			})
 		end,
 	},
+	{
+		"fladson/vim-kitty",
+	},
 }
