@@ -64,8 +64,6 @@ return {
 			end
 
 			return {
-				"",
-				"",
 				"󱐋   plugins Loaded - " .. loaded_plugins .. "                ",
 				"󰚥   plugins averall - " .. total_plugins .. "                ",
 				updates .. "                         ",
@@ -79,11 +77,9 @@ return {
 				header = {
 					"",
 					"",
-					"",
 					"Srinivasa Ramanujan (/ˈsriːnɪvɑːsə rɑːˈmɑːnʊdʒən; 22 December 1887 – 26 April 1920)",
 					"Though he had almost no formal training in pure mathematics,",
 					"he made substantial contributions to mathematical analysis, number theory, infinite series, and continued fractions.",
-					"",
 					"",
 					"   learning -                         " .. DESCRIPTION_NAME_SUFFIX,
 					"",
