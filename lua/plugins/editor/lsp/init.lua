@@ -20,7 +20,6 @@ return {
 				"lua_ls",
 				"bashls",
 				"dockerls",
-				-- frotnend
 				"eslint",
 				"cssls",
 				"emmet_ls",
@@ -28,12 +27,9 @@ return {
 				"svelte",
 				"tailwindcss",
 				"tsserver",
-				-- php
-				"intelephense",
-				-- json and yaml
-				"jsonls",
-				-- toml files
-				"taplo",
+				"intelephense", -- php
+				"jsonls", -- json and yaml
+				"taplo", -- toml files
 			},
 		})
 
