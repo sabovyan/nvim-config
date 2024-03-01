@@ -1,3 +1,5 @@
+local cwd = require("utils.cwd")
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -140,10 +142,10 @@ vim.keymap.set("n", "<leader>wd", "<cmd>windo close<cr>", { desc = "Delete windo
 -- map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
 -- map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
 -- map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
--- map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 -- map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
--- map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 
 -- to keei the cursor centered
@@ -153,12 +155,14 @@ vim.keymap.set("n", "<C-o>", "<C-o>zz", { silent = true })
 
 --
 vim.keymap.set("n", "<leader>e", function()
-	local cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.loop.cwd()
-	vim.cmd(":Explore " .. cwd)
+	-- local cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.loop.cwd()
+	local dir_path = cwd.get_cwd()
+	vim.cmd(":Explore " .. dir_path)
 end, { silent = true, desc = "[O]pen [N]etrw in [W]orkspace" })
 
 vim.keymap.set("n", "<leader>E", function()
-	vim.cmd(":Explore " .. vim.loop.cwd())
+	local dir_path = cwd.get_root()
+	vim.cmd(":Explore " .. dir_path)
 end, { silent = true, desc = "[O]pen [N]etrw in [R]oot [D]ir" })
 
 vim.keymap.set("n", "<leader>o", function()
