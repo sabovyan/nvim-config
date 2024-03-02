@@ -6,6 +6,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
+		"nvim-telescope/telescope-fzy-native.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -55,6 +56,10 @@ return {
 					override_generic_sorter = true,
 					override_file_sorter = true,
 					case_mode = "smart_case",
+				},
+				fzy_native = {
+					override_generic_sorter = false,
+					override_file_sorter = true,
 				},
 				live_grep_args = {
 					-- path_display = { "shorten" },
@@ -209,6 +214,8 @@ return {
 
 		-- Enable telescope fzf native, if installed
 		pcall(telescope.load_extension, "fzf")
+
+		require("telescope").load_extension("fzy_native")
 
 		pcall(telescope.load_extension("live_grep_args"))
 		pcall(telescope.load_extension("smart_open"))
