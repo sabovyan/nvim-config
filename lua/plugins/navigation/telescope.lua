@@ -6,7 +6,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
-		"nvim-telescope/telescope-fzy-native.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -57,10 +56,6 @@ return {
 					override_file_sorter = true,
 					case_mode = "smart_case",
 				},
-				fzy_native = {
-					override_generic_sorter = false,
-					override_file_sorter = true,
-				},
 				live_grep_args = {
 					-- path_display = { "shorten" },
 					auto_quoting = true, -- enable/disable auto-quoting
@@ -75,7 +70,7 @@ return {
 				},
 				smart_open = {
 					show_scores = true,
-					match_algorithm = "fzy",
+					match_algorithm = "fzf",
 					open_buffer_indicators = { previous = "👀", others = "🙈" },
 					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
 				},
@@ -130,24 +125,24 @@ return {
 			"Buffers"
 		)
 
-		local function find_files_by_workspace()
-			-- get current buffer's root directory
-			local b = vim.lsp.buf.list_workspace_folders()
-
-			-- if we have a root dir, use it
-			-- otherwise, use root directory
-			local cwd = b and b[1] or vim.loop.cwd()
-
-			builtin.find_files({ cwd = cwd })
-		end
+		-- local function find_files_by_workspace()
+		-- 	-- get current buffer's root directory
+		-- 	local b = vim.lsp.buf.list_workspace_folders()
+		--
+		-- 	-- if we have a root dir, use it
+		-- 	-- otherwise, use root directory
+		-- 	local cwd = b and b[1] or vim.loop.cwd()
+		--
+		-- 	builtin.find_files({ cwd = cwd })
+		-- end
 
 		nmap("<leader>:", "<cmd>Telescope command_history<cr>", "Command History")
-		nmap("<leader>ff", find_files_by_workspace, "[F]ind Files [B]y [W]orkspace")
-		nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
+		-- nmap("<leader>ff", find_files_by_workspace, "[F]ind Files [B]y [W]orkspace")
+		-- nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
 		-- smart open
-		vim.keymap.set("n", "<leader>fs", function()
+		nmap("<leader>ff", function()
 			require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
-		end, { noremap = true, silent = true, desc = "[S]mart [F]ile [S]earch" })
+		end, "[S]mart [F]ile [S]earch")
 
 		nmap("<leader>fr", "<cmd>Telescope oldfiles<cr>", "[O]pen [R]ecent [F]iles")
 
@@ -215,8 +210,6 @@ return {
 		-- Enable telescope fzf native, if installed
 		pcall(telescope.load_extension, "fzf")
 
-		require("telescope").load_extension("fzy_native")
-
 		pcall(telescope.load_extension("live_grep_args"))
 		pcall(telescope.load_extension("smart_open"))
 	end,
@@ -228,3 +221,57 @@ return {
 -- 	local tail = require("telescope.utils").path_tail(filename)
 -- 	return string.format("%s  —  %s", tail, filename)
 -- end
+--
+-- [[ Configure Telescope
+-- See `:help telescope` and `:help telescope.setup()` ]]
+
+--[[
+		local previewers = require("telescope.previewers")
+		local delta = previewers.new_termopen_previewer({
+			get_command = function(entry)
+				return {
+					"git",
+					"-c",
+					"core.pager=delta",
+					"-c",
+					"delta.side-by-side=false",
+					"diff",
+					entry.value .. "^!",
+				}
+			end,
+		})
+
+		local git_commits = function(opts)
+			opts = opts or {}
+			vim.fn.wrtiefile("/tmp/telescope.log", vim.inspect(opts))
+			opts.previewer = {
+				delta,
+				previewers.git_commit_message.new(opts),
+				previewers.git_commit_diff_as_was.new(opts),
+			}
+
+			builtin.git_commits(opts)
+		end
+
+		local git_bcommits = function(opts)
+			opts = opts or {}
+			opts.previewer = {
+				delta,
+				previewers.git_commit_message.new(opts),
+				previewers.git_commit_diff_as_was.new(opts),
+			}
+
+			builtin.git_bcommits(opts)
+		end
+
+		local git_status = function(opts)
+			opts = opts or {}
+			opts.previewer = {
+				delta,
+				previewers.git_commit_message.new(opts),
+				previewers.git_commit_diff_as_was.new(opts),
+			}
+			builtin.git_status(opts)
+		end
+]]
+--
