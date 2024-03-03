@@ -170,11 +170,13 @@ vim.keymap.set("n", "<leader>o", function()
 end, { silent = true, desc = "[O]pen [N]etrw in [C]urrent [D]ir" })
 
 -- [Yank File Path]
-vim.keymap.set("n", "<leader>cc", function()
-	vim.cmd("let @+ = expand('%:p')")
-end, { silent = true, desc = "[C]opy [F]ile [P]ath" })
+vim.keymap.set("n", "<leader>cyC", function()
+	vim.fn.setreg("+", vim.fn.expand("%:p:h"))
+end, { silent = true, desc = "Yank File Path" })
 
--- NOTE: test
+vim.keymap.set("n", "<leader>cyc", function()
+	vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, { desc = "Yank File Name" })
 
 vim.keymap.set("n", "<leader>?", function()
 	local word = vim.fn.expand("<cword>")
