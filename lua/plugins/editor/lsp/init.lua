@@ -107,8 +107,6 @@ return {
 						-- 	command = "EslintFixAll",
 						-- })
 
-						vim.g.disable_autoformat = false
-
 						vim.keymap.set("n", "<leader>cf", function()
 							vim.cmd("EslintFixAll")
 						end, { noremap = true, silent = true, desc = "Format with eslint" })
