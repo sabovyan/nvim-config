@@ -152,6 +152,13 @@ return {
 			builtin.live_grep({ cwd = cwd })
 		end
 
+		nmap("<leader>/", function()
+			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				winblend = 10,
+				previewer = false,
+			}))
+		end, "fuzzy find in Current Buffer")
+
 		nmap('<leader>s"', "<cmd>Telescope registers<cr>", "[R]egisters")
 		nmap("<leader>sa", "<cmd>Telescope autocommands<cr>", "Auto Commands")
 		nmap(
