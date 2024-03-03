@@ -107,13 +107,13 @@ return {
 						-- 	command = "EslintFixAll",
 						-- })
 
-						vim.keymap.set("n", "<leader>cf", function()
-							vim.cmd("EslintFixAll")
-						end, { noremap = true, silent = true, desc = "Format with eslint" })
-
-						vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+						vim.api.nvim_buf_create_user_command(bufnr, "Lint", function()
 							vim.cmd("EslintFixAll")
 						end, { desc = "Format current buffer with LSP" })
+
+						vim.keymap.set("n", "<leader>cl", function()
+							vim.cmd("EslintFixAll")
+						end, { noremap = true, silent = true, buffer = true, expr = false })
 					end,
 
 					settings = {
