@@ -18,7 +18,7 @@ function M.on_attach(_, bufnr)
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
-	nmap("<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
+	nmap("<leader>ci", "<cmd>LspInfo<cr>", "Lsp Info")
 	nmap("gd", function()
 		require("telescope.builtin").lsp_definitions({ reuse_win = true })
 	end, "Goto Definition")
