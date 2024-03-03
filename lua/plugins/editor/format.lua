@@ -27,27 +27,25 @@ return {
 			desc = "[B]uffer [A]uto [F]ormat [D]isable",
 		},
 		{
-			mode = { "n", "v" },
 			"<leader>ufe",
 			function()
 				vim.cmd("FormatEnable")
 			end,
+			mode = { "n", "v" },
 			desc = "[A]uto [F]ormat [E]nable",
 		},
-
 		{
-
-			mode = { "n", "v" },
 			"<leader>cf",
 			function()
 				require("conform").format({
 					timeout_ms = 3000,
 					async = true,
 					quiet = false,
-					lsp_fallback = true,
+					-- lsp_fallback = true,
 				})
 			end,
-			{ desc = "Format file or range (in visual mode)" },
+			mode = { "n", "v" },
+			desc = "Format file or range",
 		},
 	},
 	config = function()
@@ -73,13 +71,19 @@ return {
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { timeout_ms = 3000, async = true, quiet = false, lsp_fallback = true }
+				return {
+					timeout_ms = 3000,
+					async = true,
+					quiet = false,
+					-- lsp_fallback = true
+				}
 			end,
 		})
 
 		local packages = {
 			"prettier",
 			"stylua",
+			"beautysh",
 		}
 
 		Utils.install_LSP(packages)
