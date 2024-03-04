@@ -85,6 +85,7 @@ return {
 				},
 				colorscheme = {
 					enable_preview = true,
+					theme = "dropdown",
 				},
 				oldfiles = {
 					sort_lastused = true,
@@ -221,64 +222,3 @@ return {
 		pcall(telescope.load_extension("smart_open"))
 	end,
 }
-
--- path_display = function(_, path)
--- 	local filename = path:gsub(vim.pesc(vim.loop.cwd()) .. "/", "")
--- 		:gsub(vim.pesc(vim.fn.expand("$HOME")), "~")
--- 	local tail = require("telescope.utils").path_tail(filename)
--- 	return string.format("%s  —  %s", tail, filename)
--- end
---
--- [[ Configure Telescope
--- See `:help telescope` and `:help telescope.setup()` ]]
-
---[[
-		local previewers = require("telescope.previewers")
-		local delta = previewers.new_termopen_previewer({
-			get_command = function(entry)
-				return {
-					"git",
-					"-c",
-					"core.pager=delta",
-					"-c",
-					"delta.side-by-side=false",
-					"diff",
-					entry.value .. "^!",
-				}
-			end,
-		})
-
-		local git_commits = function(opts)
-			opts = opts or {}
-			vim.fn.wrtiefile("/tmp/telescope.log", vim.inspect(opts))
-			opts.previewer = {
-				delta,
-				previewers.git_commit_message.new(opts),
-				previewers.git_commit_diff_as_was.new(opts),
-			}
-
-			builtin.git_commits(opts)
-		end
-
-		local git_bcommits = function(opts)
-			opts = opts or {}
-			opts.previewer = {
-				delta,
-				previewers.git_commit_message.new(opts),
-				previewers.git_commit_diff_as_was.new(opts),
-			}
-
-			builtin.git_bcommits(opts)
-		end
-
-		local git_status = function(opts)
-			opts = opts or {}
-			opts.previewer = {
-				delta,
-				previewers.git_commit_message.new(opts),
-				previewers.git_commit_diff_as_was.new(opts),
-			}
-			builtin.git_status(opts)
-		end
-]]
---
