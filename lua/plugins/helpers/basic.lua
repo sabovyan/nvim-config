@@ -103,9 +103,12 @@ return {
 
 	-- INFO: show colors based on hex
 	{
-		"norcalli/nvim-colorizer.lua",
+		"brenoprata10/nvim-highlight-colors",
 		config = function()
-			require("colorizer").setup()
+			require("nvim-highlight-colors").setup({
+				render = "virtual",
+				enable_tailwind = true,
+			})
 		end,
 	},
 }
