@@ -126,20 +126,8 @@ return {
 			"Buffers"
 		)
 
-		-- local function find_files_by_workspace()
-		-- 	-- get current buffer's root directory
-		-- 	local b = vim.lsp.buf.list_workspace_folders()
-		--
-		-- 	-- if we have a root dir, use it
-		-- 	-- otherwise, use root directory
-		-- 	local cwd = b and b[1] or vim.loop.cwd()
-		--
-		-- 	builtin.find_files({ cwd = cwd })
-		-- end
-
 		nmap("<leader>:", "<cmd>Telescope command_history<cr>", "Command History")
-		-- nmap("<leader>ff", find_files_by_workspace, "[F]ind Files [B]y [W]orkspace")
-		-- nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
+		nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
 		-- smart open
 		nmap("<leader>ff", function()
 			require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
