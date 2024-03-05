@@ -83,6 +83,23 @@ return {
 						},
 					},
 				},
+				git_commits = {
+					git_command = {
+						"git",
+						"log",
+						"--pretty=%Cred%h%Creset %C(bold blue)<%an>%Creset %s %Cgreen(%cr)",
+						"--abbrev-commit",
+					},
+				},
+				git_bcommits = {
+					git_command = {
+						"git",
+						"log",
+						"--pretty=%Cred%h%Creset %C(bold blue)<%an>%Creset %s %Cgreen(%cr)",
+						"--follow",
+						"--abbrev-commit",
+					},
+				},
 				colorscheme = {
 					enable_preview = true,
 					theme = "dropdown",
