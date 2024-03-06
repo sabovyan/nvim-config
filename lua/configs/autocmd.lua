@@ -39,6 +39,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "set filetype=json",
 })
 
+-- treat .swcrc as json to use json syntax highlighting and jsonls for autocompletion
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = ".env*",
+	command = "set filetype=sh",
+})
+
 -- Jump to last edit position on opening file
 -- NOTE: should be checked
 -- vim.cmd([[
