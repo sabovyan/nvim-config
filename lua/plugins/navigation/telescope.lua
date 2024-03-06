@@ -85,6 +85,16 @@ return {
 					},
 				},
 				git_commits = {
+					mappings = {
+						i = {
+							["<c-y>"] = function(prompt_bufnr)
+								-- copy selected entry / hash to global register or clipboard
+								vim.fn.setreg("+", action_state.get_selected_entry().value)
+
+								actions.close(prompt_bufnr)
+							end,
+						},
+					},
 					git_command = {
 						"git",
 						"log",
