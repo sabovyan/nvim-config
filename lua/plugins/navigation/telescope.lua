@@ -125,6 +125,9 @@ return {
 					enable_preview = true,
 					theme = "dropdown",
 				},
+				lsp_references = {
+					show_line = false,
+				},
 				oldfiles = {
 					sort_lastused = true,
 					cwd_only = true,
