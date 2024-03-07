@@ -60,5 +60,5 @@ vim.o.cursorline = true
 -- fold settings
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
-vim.opt.foldcolumn = "auto"
+vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 20
