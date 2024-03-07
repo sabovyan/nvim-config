@@ -113,6 +113,12 @@ vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 vim.keymap.set("n", "<leader>ml", "<cmd>Lazy<cr>", { desc = "[O]pen Lazy" })
 vim.keymap.set("n", "<leader>mm", "<cmd>Mason<cr>", { desc = "[O]pen Mason" })
 
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+
 -- TODO: check this out
 -- floating terminal
 -- local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
@@ -122,10 +128,6 @@ vim.keymap.set("n", "<leader>mm", "<cmd>Mason<cr>", { desc = "[O]pen Mason" })
 -- map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 -- Terminal Mappings
 -- map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
--- map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
--- map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
--- map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
--- map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 -- map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
