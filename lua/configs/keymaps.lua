@@ -148,7 +148,7 @@ vim.keymap.set("n", "<leader>wd", "<cmd>windo close<cr>", { desc = "Delete windo
 
 vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-vim.keymap.set("i", "jj", "<Esc>", { silent = true })
+-- vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 
 -- to keei the cursor centered
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
