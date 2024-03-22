@@ -21,6 +21,8 @@ return {
 	},
 
 	config = function()
+		local cwd = require("utils.cwd")
+
 		local actions = require("telescope.actions")
 		local action_state = require("telescope.actions.state")
 		local telescope = require("telescope")
@@ -178,8 +180,9 @@ return {
 
 		-- Text Search
 		local function search_text_in_workspace()
-			local cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.loop.cwd()
-			builtin.live_grep({ cwd = cwd })
+			local dir = cwd.get_cwd()
+
+			-- builtin.live_grep({ cwd = dir })
 		end
 
 		nmap("<leader>/", function()
@@ -214,13 +217,40 @@ return {
 		nmap("<leader>sm", "<cmd>Telescope marks<cr>", "Jump to Mark")
 		nmap("<leader>so", "<cmd>Telescope vim_options<cr>", "Vim Options")
 
+		local function get_hilighted_text()
+			vim.cmd('noau normal! "vy"')
+
+			local text = vim.fn.getreg("v")
+			vim.fn.setreg("v", {})
+
+			text = string.gsub(text, "\n", "")
+
+			return text
+		end
+
+		local function get_current_text()
+			local mode = vim.api.nvim_get_mode()["mode"]
+
+			if mode == "n" then
+				return vim.fn.expand("<cword>")
+			end
+
+			local hilighted_text = get_hilighted_text()
+
+			if #hilighted_text > 0 then
+				return hilighted_text
+			end
+
+			return vim.fn.expand("<cword>")
+		end
+
 		local function grep_current_word_in_workspace()
 			local opts = {}
-			local word = vim.fn.expand("<cword>")
+			local word = get_current_text()
 
 			opts.word_match = "-w"
 			opts.search = word
-			opts.cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.loop.cwd()
+			opts.cwd = cwd.get_cwd()
 
 			builtin.grep_string(opts)
 		end
@@ -229,10 +259,10 @@ return {
 
 		local function grep_current_word_in_root()
 			local opts = {}
-			local word = vim.fn.expand("<cword>")
+			local word = get_current_text()
 			opts.word_match = "-w"
 			opts.search = word
-			opts.cwd = vim.loop.cwd()
+			opts.cwd = cwd.get_root()
 			builtin.grep_string(opts)
 		end
 
