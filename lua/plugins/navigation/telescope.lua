@@ -182,7 +182,7 @@ return {
 		local function search_text_in_workspace()
 			local dir = cwd.get_cwd()
 
-			-- builtin.live_grep({ cwd = dir })
+			builtin.live_grep({ cwd = dir })
 		end
 
 		nmap("<leader>/", function()
