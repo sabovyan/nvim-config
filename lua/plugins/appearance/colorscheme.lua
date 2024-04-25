@@ -1,32 +1,32 @@
 return {
-	{
-		"olimorris/onedarkpro.nvim",
-		priority = 1000, -- Ensure it loads first
-		config = function()
-			local color = require("onedarkpro.helpers")
-
-			local colors = color.get_colors()
-
-			require("onedarkpro").setup({
-				highlights = {
-					Comment = { italic = true },
-					Directory = { bold = true },
-					ErrorMsg = { italic = true, bold = true },
-
-					CursorLineNr = { fg = colors.orange },
-					Folded = { fg = colors.yellow },
-
-					-- tree-sitter
-					["@none"] = { fg = colors.comment, italic = true, underline = true },
-
-					["@punctuation.special.markdown"] = { fg = colors.cyan },
-					["@punctuation.special.checked"] = { fg = colors.green },
-				},
-			})
-
-			vim.cmd("colorscheme onedark")
-		end,
-	},
+	-- {
+	-- 	"olimorris/onedarkpro.nvim",
+	-- 	priority = 1000, -- Ensure it loads first
+	-- 	config = function()
+	-- 		local color = require("onedarkpro.helpers")
+	--
+	-- 		local colors = color.get_colors()
+	--
+	-- 		require("onedarkpro").setup({
+	-- 			highlights = {
+	-- 				Comment = { italic = true },
+	-- 				Directory = { bold = true },
+	-- 				ErrorMsg = { italic = true, bold = true },
+	--
+	-- 				CursorLineNr = { fg = colors.orange },
+	-- 				Folded = { fg = colors.yellow },
+	--
+	-- 				-- tree-sitter
+	-- 				["@none"] = { fg = colors.comment, italic = true, underline = true },
+	--
+	-- 				["@punctuation.special.markdown"] = { fg = colors.cyan },
+	-- 				["@punctuation.special.checked"] = { fg = colors.green },
+	-- 			},
+	-- 		})
+	--
+	-- 		vim.cmd("colorscheme onedark")
+	-- 	end,
+	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -35,6 +35,7 @@ return {
 		config = function()
 			require("catppuccin").setup({
 				term_colors = true,
+				transparent_background = true,
 				styles = {
 					comments = { "italic" },
 					keywords = { "italic" },
@@ -101,7 +102,7 @@ return {
 				end,
 			})
 
-			-- vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
