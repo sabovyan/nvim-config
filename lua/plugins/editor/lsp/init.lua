@@ -25,6 +25,7 @@ return {
 				"emmet_ls",
 				"html",
 				"svelte",
+				"stylelint_lsp",
 				"tailwindcss",
 				"tsserver",
 				"intelephense", -- php
