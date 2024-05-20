@@ -48,25 +48,25 @@ return {
 				end,
 			},
 
-			{
-				"zbirenbaum/copilot-cmp",
-				dependencies = {
-					"zbirenbaum/copilot.lua",
-					config = function()
-						require("copilot").setup({
-							suggestion = { enabled = false },
-							panel = { enabled = false },
-							filetypes = {
-								markdown = true,
-								help = true,
-							},
-						})
-					end,
-				},
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
+			-- {
+			-- 	"zbirenbaum/copilot-cmp",
+			-- 	dependencies = {
+			-- 		"zbirenbaum/copilot.lua",
+			-- 		config = function()
+			-- 			require("copilot").setup({
+			-- 				suggestion = { enabled = false },
+			-- 				panel = { enabled = false },
+			-- 				filetypes = {
+			-- 					markdown = true,
+			-- 					help = true,
+			-- 				},
+			-- 			})
+			-- 		end,
+			-- 	},
+			-- 	config = function()
+			-- 		require("copilot_cmp").setup()
+			-- 	end,
+			-- },
 		},
 		config = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -110,7 +110,7 @@ return {
 					{ name = "nvim_lsp", group_index = 1 },
 					{ name = "luasnip", group_index = 1, max_item_count = 5 },
 					{ name = "nvim_lua", group_index = 1, max_item_count = 5 },
-					{ name = "copilot", group_index = 2, max_item_count = 5 },
+					-- { name = "copilot", group_index = 2, max_item_count = 5 },
 					{ name = "codeium", group_index = 2, max_item_count = 5 },
 					{ name = "path", gorud_index = 2, max_item_count = 5 },
 					{ name = "emoji", group_index = 3, max_item_count = 2 },
@@ -128,9 +128,12 @@ return {
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[Lua]",
 							codeium = "[Codeium]",
-							copilot = "[Copilot]",
+							-- copilot = "[Copilot]",
 						},
-						symbol_map = { Codeium = "", Copilot = "" },
+						symbol_map = {
+							Codeium = "",
+							-- Copilot = ""
+						},
 					}),
 				},
 				experimental = {
