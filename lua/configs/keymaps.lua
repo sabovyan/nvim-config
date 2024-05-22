@@ -56,6 +56,10 @@ vim.keymap.set(
 	{ desc = "Redraw / clear hlsearch / diff update" }
 )
 
+vim.keymap.set("n", "<leader>uh", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "toggle Inlay Hints" })
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
 vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })

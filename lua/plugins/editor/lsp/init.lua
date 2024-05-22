@@ -87,11 +87,48 @@ return {
 
 					settings = {
 						Lua = {
+							hint = { enable = true },
 							telemetry = { enable = false },
 							workspace = { checkThirdParty = false },
 							diagnostics = {
 								globals = { "vim" },
 								disable = { "missing-fields" },
+							},
+						},
+					},
+				})
+			end,
+
+			["tsserver"] = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.tsserver.setup({
+					on_attach = Util.on_attach,
+					capabilities = capabilities,
+					settings = {
+						typescript = {
+							inlayHints = {
+								-- You can set this to 'all' or 'literals' to enable more hints
+								includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = false,
+								includeInlayVariableTypeHints = false,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+								includeInlayPropertyDeclarationTypeHints = false,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+						javascript = {
+							inlayHints = {
+								-- You can set this to 'all' or 'literals' to enable more hints
+								includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayVariableTypeHints = false,
+								includeInlayFunctionParameterTypeHints = false,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+								includeInlayPropertyDeclarationTypeHints = false,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
 							},
 						},
 					},
