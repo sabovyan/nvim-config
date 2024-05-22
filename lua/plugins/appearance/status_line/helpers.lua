@@ -43,7 +43,7 @@ end
 
 local function get_file_icon()
 	local extension = vim.fn.expand("%:e")
-	local filetype = vim.fn.expand("%:t")
+	local filetype = vim.bo.filetype
 
 	local icon = require("nvim-web-devicons").get_icon(filetype, extension)
 	if icon == nil then

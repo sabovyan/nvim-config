@@ -4,6 +4,15 @@ return {
 	config = function()
 		local helpers = require("plugins.appearance.status_line.helpers")
 
+		require("nvim-web-devicons").set_icon({
+			oil = {
+				icon = "󰍜",
+				color = "#428850",
+				cterm_color = "65",
+				name = "Oil",
+			},
+		})
+
 		require("lualine").setup({
 			options = {
 				section_separators = { left = "", right = "" },
