@@ -105,6 +105,9 @@ return {
 					on_attach = Util.on_attach,
 					capabilities = capabilities,
 					settings = {
+						completions = {
+							completeFunctionCalls = true,
+						},
 						typescript = {
 							inlayHints = {
 								-- You can set this to 'all' or 'literals' to enable more hints
