@@ -1,4 +1,5 @@
 return {
+
 	{
 		"hrsh7th/nvim-cmp",
 		version = false, -- last release is way too old
@@ -11,6 +12,9 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-emoji",
 			"onsails/lspkind.nvim",
+
+			-- NOTE alternative "monkoose/neocodeium",
+
 			-- {
 			-- 	"Exafunction/codeium.nvim",
 			-- 	dependencies = {
@@ -97,24 +101,33 @@ return {
 					{ name = "buffer", max_item_count = 5 },
 				}),
 				formatting = {
-					format = lspkind.cmp_format({
-						mode = "symbol_text",
-						maxwidth = 50,
-						ellipsis_char = "...",
-						menu = {
-							buffer = "[Buffer]",
-							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
-							nvim_lua = "[Lua]",
-							snp = "[Snippet]",
-							-- codeium = "[Codeium]",
-							-- copilot = "[Copilot]",
-						},
-						symbol_map = {
-							Codeium = "",
-							-- Copilot = ""
-						},
-					}),
+					fields = { "kind", "abbr", "menu" },
+					format = function(entry, vim_item)
+						local kind = require("lspkind").cmp_format({
+							mode = "symbol_text",
+							maxwidth = 50,
+							ellipsis_char = "...",
+							-- menu = {
+							-- 	buffer = "[Buffer]",
+							-- 	nvim_lsp = "[LSP]",
+							-- 	luasnip = "[LuaSnip]",
+							-- 	nvim_lua = "[Lua]",
+							-- 	snp = "[Snippet]",
+							-- 	-- codeium = "[Codeium]",
+							-- 	-- copilot = "[Copilot]",
+							-- },
+							-- symbol_map = {
+							-- 	Codeium = "",
+							-- 	-- Copilot = ""
+							-- },
+						})(entry, vim_item)
+
+						local strings = vim.split(kind.kind, "%s", { trimempty = true })
+						kind.kind = " " .. (strings[1] or "") .. " "
+						kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+						return kind
+					end,
 				},
 				experimental = {
 					ghost_text = {
