@@ -23,6 +23,7 @@ return {
 					gitsigns = true,
 					nvimtree = true,
 					treesitter = true,
+					mason = true,
 					dashboard = true,
 					which_key = false,
 					headlines = true,
