@@ -1,32 +1,4 @@
 return {
-	-- {
-	-- 	"olimorris/onedarkpro.nvim",
-	-- 	priority = 1000, -- Ensure it loads first
-	-- 	config = function()
-	-- 		local color = require("onedarkpro.helpers")
-	--
-	-- 		local colors = color.get_colors()
-	--
-	-- 		require("onedarkpro").setup({
-	-- 			highlights = {
-	-- 				Comment = { italic = true },
-	-- 				Directory = { bold = true },
-	-- 				ErrorMsg = { italic = true, bold = true },
-	--
-	-- 				CursorLineNr = { fg = colors.orange },
-	-- 				Folded = { fg = colors.yellow },
-	--
-	-- 				-- tree-sitter
-	-- 				["@none"] = { fg = colors.comment, italic = true, underline = true },
-	--
-	-- 				["@punctuation.special.markdown"] = { fg = colors.cyan },
-	-- 				["@punctuation.special.checked"] = { fg = colors.green },
-	-- 			},
-	-- 		})
-	--
-	-- 		vim.cmd("colorscheme onedark")
-	-- 	end,
-	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -91,13 +63,6 @@ return {
 						["@tag.attribute"] = { link = "TSTagAttribute" },
 						["@tag.attribute.tsx"] = { link = "TSTagAttribute" },
 						["@none"] = { link = "TSNone" },
-						["@markup.list.unchecked.markdown"] = { fg = colors.red },
-						["@markup.list.unchecked"] = { fg = colors.red },
-						["@markup.list.checked.markdown"] = { fg = colors.green },
-						["@markup.list.checked"] = { fg = colors.green },
-						["@markup.raw.block.markdown"] = { bg = colors.crust },
-						["@markup.raw.block"] = { bg = colors.crust },
-						["@markup.raw.delimiter"] = { bg = colors.crust },
 					}
 				end,
 			})
