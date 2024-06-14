@@ -10,7 +10,6 @@ return {
 		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
-		{ "folke/neodev.nvim", opts = {} },
 	},
 
 	config = function()
@@ -38,7 +37,6 @@ return {
 		-- require("lspconfig").lua_ls.setup {}
 		-- require("lspconfig").rust_analyzer.setup {}
 
-		require("neodev").setup({})
 		-- Add additional capabilities supported by nvim-cmp
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
