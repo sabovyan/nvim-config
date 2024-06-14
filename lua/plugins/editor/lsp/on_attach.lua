@@ -54,8 +54,8 @@ function M.on_attach(_, bufnr)
 		end
 	end
 	nmap("<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-	nmap("]d", diagnostic_goto(true), "Next Diagnostic")
-	nmap("[d", diagnostic_goto(false), "Prev Diagnostic")
+	-- nmap("]d", diagnostic_goto(true), "Next Diagnostic")
+	-- nmap("[d", diagnostic_goto(false), "Prev Diagnostic")
 	nmap("]e", diagnostic_goto(true, "ERROR"), "Next Error")
 	nmap("[e", diagnostic_goto(false, "ERROR"), "Prev Error")
 	nmap("]w", diagnostic_goto(true, "WARN"), "Next Warning")
