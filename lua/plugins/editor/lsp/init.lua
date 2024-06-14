@@ -10,6 +10,13 @@ return {
 		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
+		{
+			"yioneko/nvim-vtsls",
+			lazy = true,
+			config = function()
+				require("vtsls").config({})
+			end,
+		},
 	},
 
 	config = function()
@@ -26,19 +33,17 @@ return {
 				"svelte",
 				"stylelint_lsp",
 				"tailwindcss",
-				"tsserver",
+				"vtsls",
 				"intelephense", -- php
 				"jsonls", -- json and yaml
 				"taplo", -- toml files
 			},
 		})
 
-		-- After setting up mason-lspconfig you may set up servejrs via lspconfig
-		-- require("lspconfig").lua_ls.setup {}
-		-- require("lspconfig").rust_analyzer.setup {}
-
 		-- Add additional capabilities supported by nvim-cmp
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		require("mason-lspconfig").setup_handlers({
 			-- The first entry (without a key) will be the default handler
@@ -50,7 +55,7 @@ return {
 					on_attach = Util.on_attach,
 				})
 			end,
-			["jsonls"] = function()
+			jsonls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.jsonls.setup({
 					on_attach = Util.on_attach,
@@ -77,7 +82,7 @@ return {
 					},
 				})
 			end,
-			["lua_ls"] = function()
+			lua_ls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.lua_ls.setup({
 					on_attach = Util.on_attach,
@@ -97,39 +102,70 @@ return {
 				})
 			end,
 
-			["tsserver"] = function()
+			-- INFO resourcces:
+			-- https://github.com/LazyVim/LazyVim/commit/fba06ce9f522b91be8a342f9c028948c2733132d implementation in LazyVim
+			-- https://github.com/yioneko/vtsls?tab=readme-ov-file#commands
+			-- https://github.com/yioneko/nvim-vtsls?tab=readme-ov-file
+			vtsls = function()
 				local lspconfig = require("lspconfig")
-				lspconfig.tsserver.setup({
-					on_attach = Util.on_attach,
+				lspconfig.vtsls.setup({
+					on_attach = function(_, bufnr)
+						vim.keymap.set("n", "gR", function()
+							require("vtsls").commands.file_references(0)
+						end, {
+							desc = "File References",
+						})
+
+						vim.keymap.set("n", "gD", function()
+							require("vtsls").commands.goto_source_definition(0)
+						end, {
+							desc = "Goto Source Definition",
+						})
+
+						vim.keymap.set("n", "<leader>co", function()
+							require("vtsls").commands.organize_imports(0)
+						end, {
+							desc = "Organize Imports",
+						})
+
+						vim.keymap.set("n", "<leader>cM", function()
+							require("vtsls").commands.add_missing_imports(0)
+						end, {
+							desc = "Add missing imports",
+						})
+
+						vim.keymap.set("n", "<leader>cD", function()
+							require("vtsls").commands.fix_all(0)
+						end, {
+							desc = "Fix all diagnostics",
+						})
+
+						Util.on_attach(_, bufnr)
+					end,
 					capabilities = capabilities,
 					settings = {
-						completions = {
-							completeFunctionCalls = true,
-						},
-						typescript = {
-							inlayHints = {
-								-- You can set this to 'all' or 'literals' to enable more hints
-								includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = false,
-								includeInlayVariableTypeHints = false,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-								includeInlayPropertyDeclarationTypeHints = false,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
+						complete_function_calls = true,
+						vtsls = {
+							enableMoveToFileCodeAction = true,
+							autoUseWorkspaceTsdk = true,
+							experimental = {
+								completion = {
+									enableServerSideFuzzyMatch = true,
+								},
 							},
 						},
-						javascript = {
+						typescript = {
+							updateImportsOnFileMove = { enabled = "always" },
+							suggest = {
+								completeFunctionCalls = true,
+							},
 							inlayHints = {
-								-- You can set this to 'all' or 'literals' to enable more hints
-								includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayVariableTypeHints = false,
-								includeInlayFunctionParameterTypeHints = false,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-								includeInlayPropertyDeclarationTypeHints = false,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
+								enumMemberValues = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								parameterNames = { enabled = "literals" },
+								parameterTypes = { enabled = true },
+								propertyDeclarationTypes = { enabled = true },
+								variableTypes = { enabled = false },
 							},
 						},
 					},
@@ -148,11 +184,17 @@ return {
 
 						vim.api.nvim_buf_create_user_command(bufnr, "Lint", function()
 							vim.cmd("EslintFixAll")
-						end, { desc = "Format current buffer with LSP" })
+						end, { desc = "Format current buffer with ESlint" })
 
 						vim.keymap.set("n", "<leader>cl", function()
 							vim.cmd("EslintFixAll")
-						end, { noremap = true, silent = true, buffer = true, expr = false })
+						end, {
+							noremap = true,
+							silent = true,
+							buffer = true,
+							expr = false,
+							desc = "Format current buffer with ESlint",
+						})
 					end,
 
 					settings = {
