@@ -6,6 +6,9 @@ local function should_display_full_path(file_name)
 		"index.tsx",
 		"index.jsx",
 		"index.ts",
+		"page.js",
+		"page.jsx",
+		"page.tsx",
 		"init.lua",
 	}
 
