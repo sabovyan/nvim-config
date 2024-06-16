@@ -10,8 +10,10 @@ return {
 				background = "hard",
 				italics = true,
 				dim_inactive_windows = true,
-				diagnostic_text_highlight = true,
 				ui_contrast = "high",
+				colours_override = function(palette)
+					palette.bg0 = "#2a2e32"
+				end,
 			})
 
 			vim.cmd([[colorscheme everforest]])
