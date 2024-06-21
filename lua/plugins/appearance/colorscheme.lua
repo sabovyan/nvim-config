@@ -10,10 +10,8 @@ return {
 				background = "hard",
 				italics = true,
 				dim_inactive_windows = true,
-				ui_contrast = "high",
-				colours_override = function(palette)
-					palette.bg0 = "#1E2326"
-					palette.bg_dim = "#293136"
+				on_highlights = function(hl, palette)
+					hl.Search = { bg = palette.bg5 }
 				end,
 			})
 
