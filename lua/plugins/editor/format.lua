@@ -65,6 +65,8 @@ return {
 				markdown = { "prettier" },
 				graphql = { "prettier" },
 				lua = { "stylua" },
+
+				python = { "ruf", "isort", "black" },
 			},
 			format_after_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
