@@ -10,13 +10,13 @@ return {
 		config = function()
 			local wk = require("which-key")
 
-			wk.register({
-				g = { name = "[G]it" },
-				c = { name = "[C]ode [A]ction" },
-				b = { name = "[B]uffer" },
-				f = { name = "[F]ile" },
-				s = { name = "[S]earch" },
-			}, { prefix = "<leader>" })
+			wk.add({
+				{ "<leader>g", group = "[G]it" },
+				{ "<leader>c", group = "[C]ode [A]ction" },
+				{ "<leader>b", group = "[B]uffer" },
+				{ "<leader>f", group = "[F]ile" },
+				{ "<leader>s", group = "[S]earch" },
+			})
 		end,
 	},
 
