@@ -20,6 +20,13 @@ return {
 		end,
 	},
 
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+		ft = { "python", "yaml" },
+	},
+
 	-- NOTE:  plugin to handle adding/removing/replacing surroundings (e.g {}, [], "" ...)
 	{
 		"echasnovski/mini.surround",
