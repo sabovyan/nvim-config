@@ -17,15 +17,6 @@ return {
 			mode = { "n", "v" },
 			desc = "[A]uto [F]ormat [D]isable",
 		},
-
-		{
-			"<leader>ufb",
-			function()
-				vim.cmd.FormatDisable({ bang = true })
-			end,
-			mode = { "n", "v" },
-			desc = "[B]uffer [A]uto [F]ormat [D]isable",
-		},
 		{
 			"<leader>ufe",
 			function()
@@ -66,7 +57,7 @@ return {
 				graphql = { "prettier" },
 				lua = { "stylua" },
 
-				python = { "ruf", "isort", "black" },
+				python = { "ruff_format" },
 			},
 			format_after_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
@@ -86,6 +77,7 @@ return {
 			"prettier",
 			"stylua",
 			"beautysh",
+			"ruff",
 		}
 
 		Utils.install_LSP(packages)
