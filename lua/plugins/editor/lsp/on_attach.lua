@@ -19,28 +19,31 @@ function M.on_attach(_, bufnr)
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
 	nmap("<leader>ci", "<cmd>LspInfo<cr>", "Lsp Info")
-	nmap("gd", function()
-		require("telescope.builtin").lsp_definitions({ reuse_win = true })
-	end, "Goto Definition")
+	-- nmap("K", vim.lsp.buf.hover, "Hover")
+	-- nmap("gd", function()
+	-- 	require("telescope.builtin").lsp_definitions({ reuse_win = true })
+	-- end, "Goto Definition")
+	-- nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
 
-	nmap("gr", "<cmd>Telescope lsp_references<cr>", "References")
-	nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
-	nmap(
-		"gI",
-		vim.lsp.buf.implementation,
-		-- function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
-		"Goto Implementation"
-	)
-	nmap("gy", function()
+	-- nmap(
+	-- 	"gI",
+	-- 	vim.lsp.buf.implementation,
+	-- 	-- function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
+	-- 	"Goto Implementation"
+	-- )
+	-- nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
+	-- nmap("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
+
+	nmap("gR", "<cmd>Telescope lsp_references<cr>", "References")
+	nmap("gt", function()
 		require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
 	end, "Goto T[y]pe Definition")
-	nmap("K", vim.lsp.buf.hover, "Hover")
-	nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
-	nmap("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
+
 	nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
 	nmap("<leader>cA", function()
 		vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
 	end, "Source Action")
+
 	nmap("<leader>cr", vim.lsp.buf.rename, "Rename")
 
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
