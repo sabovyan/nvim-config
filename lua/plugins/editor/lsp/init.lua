@@ -34,9 +34,14 @@ return {
 				"stylelint_lsp",
 				"tailwindcss",
 				"vtsls",
+
 				"intelephense", -- php
+
 				"jsonls", -- json and yaml
 				"taplo", -- toml files
+
+				"pyright", -- python
+				"ruff", -- pyton linter
 			},
 		})
 
@@ -49,10 +54,45 @@ return {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
 			-- a dedicated handler.
-			function(server_name) -- default handler (optional)
+			function(server_name)
 				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 					on_attach = Util.on_attach,
+				})
+			end,
+
+			pyright = function()
+				require("lspconfig").pyright.setup({
+
+					settings = {
+						pyright = {
+							-- Using Ruff's import organizer
+							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								-- Ignore all files for analysis to exclusively use Ruff for linting
+								ignore = { "*" },
+							},
+						},
+					},
+				})
+			end,
+
+			ruff_lsp = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.ruff_lsp.setup({
+					on_attach = function(client)
+						if client.name == "ruff_lsp" then
+							-- Disable hover in favor of Pyright
+							client.server_capabilities.hoverProvider = false
+						end
+					end,
+					init_options = {
+						settings = {
+							args = {},
+						},
+					},
 				})
 			end,
 			jsonls = function()
