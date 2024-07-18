@@ -150,37 +150,37 @@ return {
 				local lspconfig = require("lspconfig")
 				lspconfig.vtsls.setup({
 					on_attach = function(_, bufnr)
-						vim.keymap.set("n", "gR", function()
-							require("vtsls").commands.file_references(0)
-						end, {
-							desc = "File References",
-						})
-
-						vim.keymap.set("n", "gD", function()
-							require("vtsls").commands.goto_source_definition(0)
-						end, {
-							desc = "Goto Source Definition",
-						})
-
-						vim.keymap.set("n", "<leader>co", function()
-							require("vtsls").commands.organize_imports(0)
-						end, {
-							desc = "Organize Imports",
-						})
-
-						vim.keymap.set("n", "<leader>cM", function()
-							require("vtsls").commands.add_missing_imports(0)
-						end, {
-							desc = "Add missing imports",
-						})
-
-						vim.keymap.set("n", "<leader>cD", function()
-							require("vtsls").commands.fix_all(0)
-						end, {
-							desc = "Fix all diagnostics",
-						})
-
 						Util.on_attach(_, bufnr)
+
+						local nmap = function(keys, func, desc, mode)
+							if desc then
+								desc = "VTSLS: " .. desc
+							end
+
+							vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = desc })
+						end
+
+						local vtsls = require("vtsls")
+
+						nmap("gR", function()
+							vtsls.commands.file_references(0)
+						end, "File References")
+
+						nmap("gD", function()
+							vtsls.commands.goto_source_definition(0)
+						end, "Goto Source Definition")
+
+						nmap("<leader>co", function()
+							vtsls.commands.organize_imports(0)
+						end, "Organize Imports")
+
+						nmap("<leader>cm", function()
+							vtsls.commands.add_missing_imports(0)
+						end, "Add missing imports")
+
+						nmap("<leader>cD", function()
+							vtsls.commands.fix_all(0)
+						end, "Fix all diagnostics")
 					end,
 					capabilities = capabilities,
 					settings = {
