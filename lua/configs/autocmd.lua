@@ -94,3 +94,9 @@ vim.api.nvim_create_user_command("Redir", function(ctx)
 	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 	vim.opt_local.modified = false
 end, { nargs = "+", complete = "command" })
+
+-- close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf" },
+	command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]],
+})
