@@ -35,6 +35,8 @@ return {
 				"tailwindcss",
 				"vtsls",
 
+				"prismals",
+
 				"intelephense", -- php
 
 				"jsonls", -- json and yaml
@@ -63,6 +65,26 @@ return {
 
 			pyright = function()
 				require("lspconfig").pyright.setup({
+					capabilities = capabilities,
+					on_attach = Util.on_attach,
+					on_new_config = function(new_config, root_dir)
+						local pipfile_exists = require("lspconfig").util.search_ancestors(
+							root_dir,
+							function(path)
+								local pipfile = require("lspconfig").util.path.join(path, "Pipfile")
+
+								if require("lspconfig").util.path.is_file(pipfile) then
+									return true
+								else
+									return false
+								end
+							end
+						)
+
+						if pipfile_exists then
+							new_config.cmd = { "pipenv", "run", "pyright-langserver", "--stdio" }
+						end
+					end,
 
 					settings = {
 						pyright = {
@@ -72,7 +94,7 @@ return {
 						python = {
 							analysis = {
 								-- Ignore all files for analysis to exclusively use Ruff for linting
-								ignore = { "*" },
+								-- ignore = { "*" },
 							},
 						},
 					},
@@ -82,11 +104,13 @@ return {
 			ruff_lsp = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.ruff_lsp.setup({
-					on_attach = function(client)
+					capabilities = capabilities,
+					on_attach = function(client, bufnr)
 						if client.name == "ruff_lsp" then
 							-- Disable hover in favor of Pyright
 							client.server_capabilities.hoverProvider = false
 						end
+						Util.on_attach(client, bufnr)
 					end,
 					init_options = {
 						settings = {
@@ -95,6 +119,7 @@ return {
 					},
 				})
 			end,
+
 			jsonls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.jsonls.setup({
