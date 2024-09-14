@@ -27,16 +27,16 @@ return {
 
 			-- NOTE alternative "monkoose/neocodeium",
 
-			{
-				"Exafunction/codeium.nvim",
-				dependencies = {
-					"nvim-lua/plenary.nvim",
-					"hrsh7th/nvim-cmp",
-				},
-				config = function()
-					require("codeium").setup({})
-				end,
-			},
+			-- {
+			-- 	"Exafunction/codeium.nvim",
+			-- 	dependencies = {
+			-- 		"nvim-lua/plenary.nvim",
+			-- 		"hrsh7th/nvim-cmp",
+			-- 	},
+			-- config = function()
+			-- 	require("codeium").setup({})
+			-- end,
+			-- },
 
 			-- {
 			-- 	"zbirenbaum/copilot-cmp",
@@ -63,8 +63,6 @@ return {
 			local defaults = require("cmp.config.default")()
 
 			require("configs.snippet").register_cmp_source()
-
-			local lspkind = require("lspkind")
 
 			cmp.setup({
 				completion = {
@@ -99,16 +97,15 @@ return {
 				}),
 
 				sources = cmp.config.sources({
-					{ name = "snp" },
+					{ name = "snp", group_index = 2 },
 					{
 						name = "lazydev",
 						group_index = 0, -- set group index to 0 to skip loading LuaLS completions
 					},
 					{ name = "nvim_lsp", group_index = 1 },
-					{ name = "luasnip", group_index = 1, max_item_count = 5 },
 					{ name = "nvim_lua", group_index = 1, max_item_count = 5 },
 					-- { name = "copilot", group_index = 2, max_item_count = 5 },
-					{ name = "codeium", group_index = 2, max_item_count = 5 },
+					-- { name = "codeium", group_index = 2, max_item_count = 5 },
 					{ name = "path", gorud_index = 2, max_item_count = 5 },
 					{ name = "emoji", group_index = 3, max_item_count = 2 },
 				}, {
@@ -130,10 +127,10 @@ return {
 							-- 	-- codeium = "[Codeium]",
 							-- 	-- copilot = "[Copilot]",
 							-- },
-							symbol_map = {
-								Codeium = "",
-								-- 	-- Copilot = ""
-							},
+							-- symbol_map = {
+							-- 	Codeium = "",
+							-- 	-- 	-- Copilot = ""
+							-- },
 						})(entry, vim_item)
 
 						local strings = vim.split(kind.kind, "%s", { trimempty = true })

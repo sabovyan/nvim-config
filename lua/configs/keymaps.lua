@@ -193,3 +193,106 @@ vim.keymap.set("n", "<leader>?", function()
 		print("No help for " .. word)
 	end
 end, { desc = "help", silent = true })
+
+-- local function log()
+-- 	local word = vim.fn.expand("<cword>")
+-- 	-- get the file name
+-- 	local file = vim.fn.expand("%:t")
+-- 	-- get the function name / scope
+-- 	-- local scope = vim.fn.expand("<cscope>")
+--
+-- 	local ts_utils = require("nvim-treesitter.ts_utils")
+--
+-- 	local current_node = ts_utils.get_node_at_cursor()
+--
+-- 	local expr = current_node
+--
+-- 	while expr do
+-- 		if expr:type() == "function_declaration" then
+-- 			break
+-- 		elseif expr:type() == "function_definition" then
+-- 			expr = expr:parent()
+-- 			break
+-- 		end
+-- 		expr = expr:parent()
+-- 	end
+--
+-- 	if not expr then
+-- 		return ""
+-- 	end
+--
+-- 	local expr_child = expr:child(5)
+--
+-- 	local node_text = ts_utils.get_node_text(expr_child)
+--
+-- 	return node_text[1]
+-- end
+
+-- overall the result should be something lile this
+--  [filename]: [function_name]: [variable that should be logged]
+
+function my_log()
+	local ts_utils = require("nvim-treesitter.ts_utils")
+	local current_node = ts_utils.get_node_at_cursor()
+	local expr = current_node
+
+	while expr do
+		if expr:type() == "function_definition" then
+			print("function_definition")
+			expr = expr:parent()
+			break
+		end
+		if expr:type() == "function_declaration" then
+			break
+		end
+		expr = expr:parent()
+	end
+
+	if not expr then
+		return ""
+	end
+
+	for node, field in expr:iter_children() do
+		-- if field == "identifier" then
+		-- 	local bufnr = vim.api.nvim_get_current_buf()
+		-- 	-- local text = vim.treesitter.get_node_text(node, bufnr)[1]
+		--
+		-- 	local text = ts_utils.get_node_text(node)[1]
+		--
+		-- 	print(text)
+		-- end
+
+		if field == "identifier" then
+			local text = ts_utils.get_node_text(node)[1]
+
+			print(text)
+		end
+
+		if field == "name" then
+			local text = ts_utils.get_node_text(node)[1]
+
+			print(text)
+		end
+	end
+
+	return ""
+end
+
+local something = function()
+	local count = 0
+
+	return function()
+		count = count + 1
+		return count
+	end
+end
+
+vim.keymap.set("n", "<leader>t", function()
+	cwd.test()
+
+	-- if word == "" then
+	-- 	print("No function found")
+	-- 	return
+	-- end
+	-- print(vim.inspect(word))
+end, { desc = "Log current function" })
