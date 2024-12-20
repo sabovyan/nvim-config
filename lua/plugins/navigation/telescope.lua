@@ -162,13 +162,6 @@ return {
 		nmap("<leader>gC", builtin.git_commits, "[C]urrent [H]istory")
 		nmap("<leader>gs", builtin.git_status, "[G]it [S]tatus")
 
-		-- Files and buffers
-		nmap(
-			"<leader><space>",
-			"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
-			"Buffers"
-		)
-
 		nmap("<leader>:", "<cmd>Telescope command_history<cr>", "Command History")
 		nmap("<leader>fF", builtin.find_files, "Find Files [R]oot [D]ir")
 		-- smart open
