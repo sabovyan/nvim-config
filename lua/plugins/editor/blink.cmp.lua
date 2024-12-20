@@ -43,7 +43,7 @@ return {
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = "enter" },
+			keymap = { preset = "default" },
 
 			completion = {
 				auto_brackets = {
