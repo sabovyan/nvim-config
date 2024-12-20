@@ -5,6 +5,8 @@ return {
 	config = function()
 		local fzf = require("fzf-lua")
 
+		local actions = require("fzf-lua.actions")
+
 		-- Places the floating window at the bottom left corner
 		require("fzf-lua").setup({})
 
@@ -15,11 +17,14 @@ return {
 			fzf.files()
 		end)
 
-		vim.keymap.set("n", "<C-\\>", function()
+		vim.keymap.set("n", "<leader><space>", function()
 			fzf.buffers({
 				winopts = {
 					preview = {
 						hidden = "hidden",
+					},
+					actions = {
+						["ctrl-d"] = { fn = actions.buf_del, reload = true },
 					},
 				},
 			})
