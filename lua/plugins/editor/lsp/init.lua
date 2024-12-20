@@ -123,8 +123,8 @@ return {
 			jsonls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.jsonls.setup({
-					on_attach = Util.on_attach,
 					capabilities = capabilities,
+					on_attach = Util.on_attach,
 
 					settings = {
 						json = {
@@ -150,8 +150,8 @@ return {
 			lua_ls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.lua_ls.setup({
-					on_attach = Util.on_attach,
 					capabilities = capabilities,
+					on_attach = Util.on_attach,
 
 					settings = {
 						Lua = {
@@ -174,6 +174,7 @@ return {
 			vtsls = function()
 				local lspconfig = require("lspconfig")
 				lspconfig.vtsls.setup({
+					capabilities = capabilities,
 					on_attach = function(_, bufnr)
 						Util.on_attach(_, bufnr)
 
@@ -207,7 +208,6 @@ return {
 							vtsls.commands.fix_all(0)
 						end, "Fix all diagnostics")
 					end,
-					capabilities = capabilities,
 					settings = {
 						complete_function_calls = true,
 						vtsls = {
@@ -241,25 +241,33 @@ return {
 				local lspconfig = require("lspconfig")
 				lspconfig.eslint.setup({
 					capabilities = capabilities,
+
+					root_dir = lspconfig.util.root_pattern(
+						".eslintrc.js",
+						"eslint.config.mjs",
+						"package.json",
+						".git"
+					),
 					on_attach = function(_, bufnr)
-						-- vim.api.nvim_create_autocmd("BufWritePre", {
-						-- 	buffer = bufnr,
-						-- 	command = "EslintFixAll",
-						-- })
-
-						vim.api.nvim_buf_create_user_command(bufnr, "Lint", function()
-							vim.cmd("EslintFixAll")
-						end, { desc = "Format current buffer with ESlint" })
-
-						vim.keymap.set("n", "<leader>cl", function()
-							vim.cmd("EslintFixAll")
-						end, {
-							noremap = true,
-							silent = true,
-							buffer = true,
-							expr = false,
-							desc = "Format current buffer with ESlint",
+						Util.on_attach(_, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
 						})
+
+						-- vim.api.nvim_buf_create_user_command(bufnr, "Lint", function()
+						-- 	vim.cmd("EslintFixAll")
+						-- end, { desc = "Format current buffer with ESlint" })
+						--
+						-- vim.keymap.set("n", "<leader>cl", function()
+						-- 	vim.cmd("EslintFixAll")
+						-- end, {
+						-- 	noremap = true,
+						-- 	silent = true,
+						-- 	buffer = true,
+						-- 	expr = false,
+						-- 	desc = "Format current buffer with ESlint",
+						-- })
 					end,
 
 					settings = {
