@@ -40,6 +40,9 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
 		opts = {
+			keywords = {
+				TODO = { icon = " ", color = "#f29bf2" },
+			},
 			highlight = {
 				before = "fg", -- "fg" or "bg" or empty
 				keyword = "wide_fg",
