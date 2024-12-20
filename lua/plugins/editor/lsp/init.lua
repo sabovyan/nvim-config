@@ -8,7 +8,6 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"neovim/nvim-lspconfig",
-		-- "hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
 		"saghen/blink.cmp",
 		{

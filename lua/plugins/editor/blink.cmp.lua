@@ -18,7 +18,11 @@ return {
 				config = function()
 					require("luasnip.loaders.from_vscode").lazy_load()
 					require("luasnip.loaders.from_vscode").lazy_load({
-						paths = { vim.fn.stdpath("config") .. "/snippets" },
+						paths = {
+							vim.fn.stdpath("config") .. "/snippets",
+							-- Add paths to any additional VSCode style snippet collections
+							-- vim.fn.stdpath("config") .. "/my-snippets"
+						},
 					})
 				end,
 			},

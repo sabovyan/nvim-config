@@ -1,0 +1,133 @@
+{
+  "React TypeScript Function Component": {
+    "prefix": "rfc",
+    "body": [
+      "import { FC } from 'react'",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "\t${2:prop}: ${3:type}",
+      "}",
+      "",
+      "const ${1:ComponentName}: FC<${1:ComponentName}Props> = ({ ${2:prop} }) => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:ComponentName}"
+    ],
+    "description": "React TypeScript Function Component with Props Interface"
+  },
+  "Next.js TypeScript Page": {
+    "prefix": "npage",
+    "body": [
+      "import { NextPage } from 'next'",
+      "",
+      "interface ${1:PageName}Props {",
+      "\t${2:prop}: ${3:type}",
+      "}",
+      "",
+      "const ${1:PageName}: NextPage<${1:PageName}Props> = ({ ${2:prop} }) => {",
+      "\treturn (",
+      "\t\t<main>",
+      "\t\t\t$0",
+      "\t\t</main>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:PageName}"
+    ],
+    "description": "Next.js TypeScript Page Component"
+  },
+  "useState TypeScript": {
+    "prefix": "ust",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:type}>(${3:initialState})"
+    ],
+    "description": "React useState Hook with TypeScript"
+  },
+  "useEffect TypeScript": {
+    "prefix": "ueft",
+    "body": ["useEffect(() => {", "\t${0}", "}, [${1}])"],
+    "description": "React useEffect Hook with TypeScript"
+  },
+  "API Route Handler": {
+    "prefix": "apihandler",
+    "body": [
+      "import { NextApiRequest, NextApiResponse } from 'next'",
+      "",
+      "type ResponseData = {",
+      "\t${1:message}: string",
+      "}",
+      "",
+      "export default async function handler(",
+      "\treq: NextApiRequest,",
+      "\tres: NextApiResponse<ResponseData>",
+      ") {",
+      "\tconst { method } = req",
+      "",
+      "\tswitch (method) {",
+      "\t\tcase 'GET':",
+      "\t\t\ttry {",
+      "\t\t\t\t$0",
+      "\t\t\t\tres.status(200).json({ ${1:message}: 'Success' })",
+      "\t\t\t} catch (error) {",
+      "\t\t\t\tres.status(500).json({ ${1:message}: 'Error' })",
+      "\t\t\t}",
+      "\t\t\tbreak",
+      "\t\tdefault:",
+      "\t\t\tres.setHeader('Allow', ['GET'])",
+      "\t\t\tres.status(405).end(`Method ${method} Not Allowed`)",
+      "\t}",
+      "}"
+    ],
+    "description": "Next.js API Route Handler with TypeScript"
+  },
+  "GetServerSideProps": {
+    "prefix": "gssp",
+    "body": [
+      "import { GetServerSideProps } from 'next'",
+      "",
+      "export const getServerSideProps: GetServerSideProps = async (context) => {",
+      "\ttry {",
+      "\t\t${0}",
+      "\t\treturn {",
+      "\t\t\tprops: {",
+      "\t\t\t\t${1:data}: ${2:value}",
+      "\t\t\t}",
+      "\t\t}",
+      "\t} catch (error) {",
+      "\t\treturn {",
+      "\t\t\tnotFound: true",
+      "\t\t}",
+      "\t}",
+      "}"
+    ],
+    "description": "GetServerSideProps with TypeScript"
+  },
+  "Custom Hook": {
+    "prefix": "chook",
+    "body": [
+      "import { useState, useEffect } from 'react'",
+      "",
+      "interface ${1:HookName}Props {",
+      "\t${2:prop}: ${3:type}",
+      "}",
+      "",
+      "export const use${1:HookName} = ({ ${2:prop} }: ${1:HookName}Props) => {",
+      "\tconst [${4:state}, set${4/(.*)/${1:/capitalize}/}] = useState<${5:type}>(${6:initialState})",
+      "",
+      "\tuseEffect(() => {",
+      "\t\t$0",
+      "\t}, [${2:prop}])",
+      "",
+      "\treturn {",
+      "\t\t${4:state}",
+      "\t}",
+      "}"
+    ],
+    "description": "Custom React Hook with TypeScript"
+  }
+}
