@@ -15,64 +15,51 @@ function M.on_attach(_, bufnr)
 		vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	-- Global mappings.
-	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+	nmap("grr", "<cmd>FzfLua lsp_references<cr>", "References")
 
-	nmap("<leader>ci", "<cmd>LspInfo<cr>", "Lsp Info")
-	-- nmap("K", vim.lsp.buf.hover, "Hover")
-	-- nmap("gd", function()
-	-- 	require("telescope.builtin").lsp_definitions({ reuse_win = true })
-	-- end, "Goto Definition")
-	-- nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
+	nmap("[e", function()
+		vim.diagnostic.jump({
+			count = -1,
+			severity = vim.diagnostic.severity.ERROR,
+			float = true,
+		})
+	end, "Previous Error")
 
-	-- nmap(
-	-- 	"gI",
-	-- 	vim.lsp.buf.implementation,
-	-- 	-- function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
-	-- 	"Goto Implementation"
-	-- )
-	-- nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
-	-- nmap("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
+	nmap("]e", function()
+		vim.diagnostic.jump({
+			count = 1,
+			severity = vim.diagnostic.severity.ERROR,
+			float = true,
+		})
+	end, "Next Error")
 
-	nmap("gR", "<cmd>FzfLua lsp_references<cr>", "References")
-	nmap("gt", function()
-		require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-	end, "Goto T[y]pe Definition")
+	nmap("[w", function()
+		vim.diagnostic.jump({
+			count = -1,
+			severity = vim.diagnostic.severity.WARN,
+			float = true,
+		})
+	end, "Previous Warning")
 
-	nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
-	nmap("<leader>cA", function()
-		vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
-	end, "Source Action")
+	nmap("]w", function()
+		vim.diagnostic.jump({
+			count = 1,
+			severity = vim.diagnostic.severity.WARN,
+			float = true,
+		})
+	end, "Next Warning")
 
-	nmap("<leader>cr", vim.lsp.buf.rename, "Rename")
+	nmap("<leader>wd", function()
+		require("fzf-lua").lsp_workspace_diagnostics()
+	end, "[W]orkspace [D]iagnostic")
 
-	-- nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	nmap("<leader>ws", function()
+		require("fzf-lua").lsp_live_workspace_symbols()
+	end, "[W]orkspace [S]ymbols")
 
-	-- diagnostic
-	local diagnostic_goto = function(next, severity)
-		local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-		severity = severity and vim.diagnostic.severity[severity] or nil
-		return function()
-			go({ severity = severity })
-		end
-	end
-	nmap("<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-	-- nmap("]d", diagnostic_goto(true), "Next Diagnostic")
-	-- nmap("[d", diagnostic_goto(false), "Prev Diagnostic")
-	nmap("]e", diagnostic_goto(true, "ERROR"), "Next Error")
-	nmap("[e", diagnostic_goto(false, "ERROR"), "Prev Error")
-	nmap("]w", diagnostic_goto(true, "WARN"), "Next Warning")
-	nmap("[w", diagnostic_goto(false, "WARN"), "Prev Warning")
-
-	-- nmap(
-	-- 	"<leader>ws",
-	-- 	require("telescope.builtin").lsp_dynamic_workspace_symbols,
-	-- 	"[W]orkspace [S]ymbols"
-	-- )
-	--
-	-- nmap("<leader>wl", function()
-	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	-- end, "[W]orkspace [L]ist Folders")
+	nmap("<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, "[W]orkspace [L]ist Folders")
 
 	-- Create a command `:Format` local to the LSP buffer
 	-- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)

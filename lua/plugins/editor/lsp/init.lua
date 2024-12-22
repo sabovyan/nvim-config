@@ -49,6 +49,8 @@ return {
 
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+		vim.keymap.set("n", "<leader>ci", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+
 		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		require("mason-lspconfig").setup_handlers({

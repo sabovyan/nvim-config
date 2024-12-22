@@ -43,6 +43,19 @@ return {
 
 		-- Search
 		vim.keymap.set({ "n", "v" }, "<leader>sw", function()
+			local cwd = require("utils.cwd")
+
+			local function get_hilighted_text()
+				vim.cmd('noau normal! "vy"')
+
+				local text = vim.fn.getreg("v")
+				vim.fn.setreg("v", {})
+
+				text = string.gsub(text, "\n", "")
+
+				return text
+			end
+
 			local function get_current_text()
 				local mode = vim.api.nvim_get_mode()["mode"]
 
@@ -59,11 +72,11 @@ return {
 				return vim.fn.expand("<cword>")
 			end
 
-			fzf.builtin.grep_string({
-				search = get_current_text(),
-				word_match = "-w",
-				cwd = cwd.get_cwd(),
-			})
+			-- fzf.builtin({
+			-- 	search = get_current_text(),
+			-- 	word_match = "-w",
+			-- 	cwd = cwd.get_cwd(),
+			-- })
 
 			-- local function grep_current_word_in_root()
 			-- 	local opts = {}
@@ -74,7 +87,7 @@ return {
 			-- 	-- builtin.grep_string(opts)
 			-- end
 
-			fzf.grep_cword()
+			fzf.grep_cword({ winopts = { fullscreen = true } })
 		end, { desc = "[G]rep [C]urrent [W]ord" })
 
 		vim.keymap.set("n", "<leader>sf", function()
