@@ -47,10 +47,11 @@ return {
 					headlines = true,
 					lsp_trouble = true,
 					notifier = true,
-					telescope = {
-						enabled = true,
-						style = "nvchad",
-					},
+					fzf = true,
+					-- telescope = {
+					-- 	enabled = true,
+					-- 	style = "nvchad",
+					-- },
 					native_lsp = {
 						enabled = true,
 						virtual_text = {

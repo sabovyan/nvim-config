@@ -34,7 +34,7 @@ function M.on_attach(_, bufnr)
 	-- nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
 	-- nmap("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
 
-	nmap("gR", "<cmd>Telescope lsp_references<cr>", "References")
+	nmap("gR", "<cmd>FzfLua lsp_references<cr>", "References")
 	nmap("gt", function()
 		require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
 	end, "Goto T[y]pe Definition")
@@ -46,7 +46,7 @@ function M.on_attach(_, bufnr)
 
 	nmap("<leader>cr", vim.lsp.buf.rename, "Rename")
 
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	-- nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
 	-- diagnostic
 	local diagnostic_goto = function(next, severity)
@@ -64,15 +64,15 @@ function M.on_attach(_, bufnr)
 	nmap("]w", diagnostic_goto(true, "WARN"), "Next Warning")
 	nmap("[w", diagnostic_goto(false, "WARN"), "Prev Warning")
 
-	nmap(
-		"<leader>ws",
-		require("telescope.builtin").lsp_dynamic_workspace_symbols,
-		"[W]orkspace [S]ymbols"
-	)
-
-	nmap("<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, "[W]orkspace [L]ist Folders")
+	-- nmap(
+	-- 	"<leader>ws",
+	-- 	require("telescope.builtin").lsp_dynamic_workspace_symbols,
+	-- 	"[W]orkspace [S]ymbols"
+	-- )
+	--
+	-- nmap("<leader>wl", function()
+	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	-- end, "[W]orkspace [L]ist Folders")
 
 	-- Create a command `:Format` local to the LSP buffer
 	-- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
