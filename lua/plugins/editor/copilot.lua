@@ -1,14 +1,6 @@
 return {
 	{
 		"github/copilot.vim",
-		-- keys = {
-		-- 	{
-		-- 		"<leader>kk",
-		-- 		"<cmd>Copilot panel<CR>",
-		-- 		mode = { "n", "v" },
-		-- 		desc = "Copilot Panel",
-		-- 	},
-		-- },
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",

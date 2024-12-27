@@ -17,8 +17,17 @@ return {
 		fzf.setup({
 			formatter = "path.filename_first",
 			winopts = { preview = { title = false } },
-			files = common_files_options,
-			oldfiles = common_files_options,
+			files = {
+				cwd_prompt = false,
+			},
+			oldfiles = {
+				cwd_prompt = false,
+				winopts = {
+					preview = {
+						hidden = "hidden",
+					},
+				},
+			},
 			buffers = {
 				winopts = {
 					preview = {

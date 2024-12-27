@@ -287,12 +287,12 @@ local something = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>t", function()
-	cwd.test()
-
-	-- if word == "" then
-	-- 	print("No function found")
-	-- 	return
-	-- end
-	-- print(vim.inspect(word))
-end, { desc = "Log current function" })
+-- vim.keymap.set("n", "<leader>t", function()
+-- 	cwd.test()
+--
+-- 	-- if word == "" then
+-- 	-- 	print("No function found")
+-- 	-- 	return
+-- 	-- end
+-- 	-- print(vim.inspect(word))
+-- end, { desc = "Log current function" })
