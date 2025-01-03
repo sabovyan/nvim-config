@@ -14,6 +14,7 @@ return {
 		--		event = "LazyFile",
 		config = function()
 			local gc = require("gitsigns")
+
 			gc.setup({
 				current_line_blame = true,
 				signs = {
@@ -85,15 +86,15 @@ return {
 			})
 		end,
 	},
-	{
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-
-		config = function()
-			vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit <CR>", { desc = "Lazygit (root dir)" })
-		end,
-	},
+	-- {
+	-- 	"kdheepak/lazygit.nvim",
+	-- 	-- optional for floating window border decoration
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	--
+	-- 	config = function()
+	-- 		vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit <CR>", { desc = "Lazygit (root dir)" })
+	-- 	end,
+	-- },
 }
