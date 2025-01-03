@@ -11,11 +11,11 @@ return {
 			local wk = require("which-key")
 
 			wk.add({
-				{ "<leader>g", group = "[G]it" },
-				{ "<leader>c", group = "[C]ode [A]ction" },
-				{ "<leader>b", group = "[B]uffer" },
-				{ "<leader>f", group = "[F]ile" },
-				{ "<leader>s", group = "[S]earch" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>c", group = "Code Action" },
+				{ "<leader>b", group = "Buffer" },
+				{ "<leader>f", group = "File" },
+				{ "<leader>s", group = "Search" },
 			})
 		end,
 	},
