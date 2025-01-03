@@ -40,21 +40,23 @@ return {
 		-- Files
 		vim.keymap.set("n", "<leader>ff", function()
 			fzf.files()
-		end, { desc = "[Open] [F]iles" })
+		end, { desc = "Open Files" })
 
 		vim.keymap.set("n", "<leader>fr", function()
-			fzf.oldfiles()
-		end, { desc = "[Open] [R]ecent Files" })
+			fzf.oldfiles({
+				cwd = vim.fn.getcwd(),
+			})
+		end, { desc = "Open Recent Files" })
 
 		vim.keymap.set("n", "<leader><space>", function()
 			fzf.buffers()
-		end, { desc = "[Open] [B]uffers" })
+		end, { desc = "Open Buffers" })
 
 		-- Search
 		vim.keymap.set({ "n", "v" }, "<leader>sw", function()
 			local cwd = require("utils.cwd")
 
-			local function get_hilighted_text()
+			local function get_highlighted_text()
 				vim.cmd('noau normal! "vy"')
 
 				local text = vim.fn.getreg("v")
@@ -72,10 +74,10 @@ return {
 					return vim.fn.expand("<cword>")
 				end
 
-				local hilighted_text = get_hilighted_text()
+				local highlighted_text = get_highlighted_text()
 
-				if #hilighted_text > 0 then
-					return hilighted_text
+				if #highlighted_text > 0 then
+					return highlighted_text
 				end
 
 				return vim.fn.expand("<cword>")
@@ -97,7 +99,7 @@ return {
 			-- end
 
 			fzf.grep_cword({ winopts = { fullscreen = true } })
-		end, { desc = "[G]rep [C]urrent [W]ord" })
+		end, { desc = "Grep Current Word" })
 
 		vim.keymap.set("n", "<leader>sf", function()
 			fzf.live_grep({
@@ -108,11 +110,11 @@ return {
 					fullscreen = true,
 				},
 			})
-		end, { desc = "[G]rep [C]urrent [W]orking [D]irectory" })
+		end, { desc = "Grep Current Working Directory" })
 
 		vim.keymap.set("n", "<leader>sH", function()
 			fzf.highlights()
-		end, { desc = "[S]earch [H]ighlights" })
+		end, { desc = "Search Highlights" })
 
 		vim.keymap.set("n", "<leader>sm", function()
 			fzf.marks()
@@ -123,27 +125,27 @@ return {
 
 		vim.keymap.set("n", "<leader>gs", function()
 			fzf.git_status(git_options)
-		end, { desc = "[G]it [S]tatus" })
+		end, { desc = "Git Status" })
 
 		vim.keymap.set("n", "<leader>gc", function()
 			fzf.git_bcommits(git_options)
-		end, { desc = "[C]urrent [B]uffer [H]istory" })
+		end, { desc = "Current Buffer History" })
 
 		vim.keymap.set("n", "<leader>gC", function()
 			fzf.git_commits(git_options)
-		end, { desc = "[C]urrent [H]istory" })
+		end, { desc = "Current History" })
 
 		-- others
 		vim.keymap.set("n", "<leader>:", function()
 			fzf.command_history()
-		end, { desc = "[C]ommand [H]istory" })
+		end, { desc = "Command History" })
 
 		vim.keymap.set("n", "<leader>;", function()
 			fzf.help_tags()
-		end, { desc = "[H]elp [T]ags" })
+		end, { desc = "Help Tags" })
 
 		vim.keymap.set("n", "<leader>/", function()
 			fzf.grep_curbuf(common_files_options)
-		end, { desc = "[F]uzzy [F]ind [I]n [C]urrent [B]uffer" })
+		end, { desc = "Fuzzy Find In Current Buffer" })
 	end,
 }
