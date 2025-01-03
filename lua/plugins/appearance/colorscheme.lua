@@ -26,6 +26,7 @@ return {
 		config = function()
 			require("catppuccin").setup({
 				term_colors = true,
+				transparent_background = true,
 				styles = {
 					comments = { "italic" },
 					keywords = { "italic" },
