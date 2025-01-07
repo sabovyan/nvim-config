@@ -26,6 +26,7 @@
     "git_bcommits",
     "mfussenegger",
     "williamboman",
+    "lazydev"
   ],
   "ignorePaths": ["node_modules/**", "spell/**"]
 }
