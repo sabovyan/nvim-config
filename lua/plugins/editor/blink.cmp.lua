@@ -46,10 +46,13 @@ return {
 			keymap = { preset = "default" },
 
 			completion = {
-				auto_brackets = {
-					enabled = true,
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
 				},
 			},
+			-- experimental signature help support
+			signature = { enabled = true },
 
 			appearance = {
 				use_nvim_cmp_as_default = true,
@@ -57,13 +60,16 @@ return {
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				-- optionally disable cmdline completions
 				-- cmdline = {},
 				providers = {
-					-- dont show LuaLS require statements when lazydev has items
-					lsp = { fallback_for = { "lazydev" } },
-					lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
 				},
 			},
 			snippets = {
@@ -80,9 +86,6 @@ return {
 					require("luasnip").jump(direction)
 				end,
 			},
-
-			-- experimental signature help support
-			signature = { enabled = true },
 		},
 		-- allows extending the providers array elsewhere in your config
 		-- without having to redefine it
