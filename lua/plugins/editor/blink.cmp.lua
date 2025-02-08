@@ -29,13 +29,13 @@ return {
 		},
 	},
 	{
-
 		"saghen/blink.cmp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			"folke/lazydev.nvim",
 			{ "L3MON4D3/LuaSnip", version = "v2.*" },
 		},
+		event = "InsertEnter",
 
 		-- use a release tag to download pre-built binaries
 		version = "v0.*",
@@ -45,15 +45,6 @@ return {
 		opts = {
 			keymap = { preset = "default" },
 
-			completion = {
-				documentation = {
-					auto_show = true,
-					auto_show_delay_ms = 200,
-				},
-			},
-			-- experimental signature help support
-			signature = { enabled = true },
-
 			appearance = {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "mono",
@@ -61,8 +52,6 @@ return {
 
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-				-- optionally disable cmdline completions
-				-- cmdline = {},
 				providers = {
 					lazydev = {
 						name = "LazyDev",
