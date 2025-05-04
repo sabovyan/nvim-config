@@ -72,63 +72,63 @@ local function show_suggestions()
 end
 
 return {
-	"mfussenegger/nvim-lint",
-	dependencies = {
-		"williamboman/mason.nvim",
-	},
-	event = {
-		"BufReadPre",
-		"BufNewFile",
-	},
-	config = function()
-		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPre" }, {
-			pattern = { "*.ts", "*.tsx", "*.lua" },
-			callback = function()
-				require("lint").try_lint("cspell")
-			end,
-		})
-
-		local function add_to_accepted_words()
-			local word = vim.fn.expand("<cword>")
-			local cwd = vim.fn.getcwd()
-
-			local file = io.open(cwd .. "/cspell.json", "r")
-
-			if not file then
-				vim.notify("No cspell.json file found in current directory", vim.log.levels.ERROR)
-				return
-			end
-
-			local content = file:read("*a")
-			local json = vim.json.decode(content)
-			file:close()
-
-			if not json.words then
-				json.words = {}
-			end
-
-			table.insert(json.words, word)
-
-			file = io.open(cwd .. "/cspell.json", "w")
-
-			if not file then
-				vim.notify("No cspell.json file found to write", vim.log.levels.ERROR)
-				return
-			end
-
-			file:write(vim.json.encode(json))
-			file:close()
-
-			vim.notify("Added '" .. word .. "' to dictionary", vim.log.levels.INFO)
-		end
-
-		vim.keymap.set(
-			"n",
-			"<leader>cd",
-			add_to_accepted_words,
-			{ desc = "Add New Word to Dictionary" }
-		)
-
-		vim.keymap.set("n", "<leader>cs", show_suggestions, { desc = "Show spelling suggestions" })
-	end,
+	-- "mfussenegger/nvim-lint",
+	-- dependencies = {
+	-- 	"williamboman/mason.nvim",
+	-- },
+	-- event = {
+	-- 	"BufReadPre",
+	-- 	"BufNewFile",
+	-- },
+	-- config = function()
+	-- 	vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPre" }, {
+	-- 		pattern = { "*.ts", "*.tsx", "*.lua" },
+	-- 		callback = function()
+	-- 			require("lint").try_lint("cspell")
+	-- 		end,
+	-- 	})
+	--
+	-- 	local function add_to_accepted_words()
+	-- 		local word = vim.fn.expand("<cword>")
+	-- 		local cwd = vim.fn.getcwd()
+	--
+	-- 		local file = io.open(cwd .. "/cspell.json", "r")
+	--
+	-- 		if not file then
+	-- 			vim.notify("No cspell.json file found in current directory", vim.log.levels.ERROR)
+	-- 			return
+	-- 		end
+	--
+	-- 		local content = file:read("*a")
+	-- 		local json = vim.json.decode(content)
+	-- 		file:close()
+	--
+	-- 		if not json.words then
+	-- 			json.words = {}
+	-- 		end
+	--
+	-- 		table.insert(json.words, word)
+	--
+	-- 		file = io.open(cwd .. "/cspell.json", "w")
+	--
+	-- 		if not file then
+	-- 			vim.notify("No cspell.json file found to write", vim.log.levels.ERROR)
+	-- 			return
+	-- 		end
+	--
+	-- 		file:write(vim.json.encode(json))
+	-- 		file:close()
+	--
+	-- 		vim.notify("Added '" .. word .. "' to dictionary", vim.log.levels.INFO)
+	-- 	end
+	--
+	-- 	vim.keymap.set(
+	-- 		"n",
+	-- 		"<leader>cd",
+	-- 		add_to_accepted_words,
+	-- 		{ desc = "Add New Word to Dictionary" }
+	-- 	)
+	--
+	-- 	vim.keymap.set("n", "<leader>cs", show_suggestions, { desc = "Show spelling suggestions" })
+	-- end,
 }

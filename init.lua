@@ -33,7 +33,7 @@ require("lazy").setup({
 }, {
 	install = {
 		missing = true,
-		colorscheme = { "everforest", "catppuccin", "habamax" },
+		colorscheme = { "catppuccin", "habamax" },
 	},
 	change_detection = {
 		-- automatically check for config file changes and reload the ui
@@ -41,3 +41,6 @@ require("lazy").setup({
 		notify = false,
 	},
 })
+
+vim.cmd.colorscheme("gruvbox-material")
+-- vim.cmd.colorscheme("catppuccin")

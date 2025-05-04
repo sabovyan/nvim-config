@@ -41,7 +41,7 @@ return {
 		event = "VeryLazy",
 		opts = {
 			keywords = {
-				TODO = { icon = " ", color = "#f29bf2" },
+				-- TODO = { icon = " ", color = "#f29bf2" },
 			},
 			highlight = {
 				before = "fg", -- "fg" or "bg" or empty

@@ -61,8 +61,6 @@ return {
 	-- 		local cmp = require("cmp")
 	-- 		local defaults = require("cmp.config.default")()
 	--
-	-- 		require("configs.snippet").register_cmp_source()
-	--
 	-- 		cmp.setup({
 	-- 			completion = {
 	-- 				completeopt = "menu,menuone,noinsert",

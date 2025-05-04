@@ -10,6 +10,7 @@ return {
 		"neovim/nvim-lspconfig",
 		"b0o/SchemaStore.nvim",
 		"saghen/blink.cmp",
+		{ "j-hui/fidget.nvim", opts = {} },
 		{
 			"yioneko/nvim-vtsls",
 			lazy = true,
@@ -26,7 +27,7 @@ return {
 				"lua_ls",
 				"bashls",
 				"dockerls",
-				"eslint",
+				"eslint@4.9.0",
 				"cssls",
 				"emmet_ls",
 				"html",
@@ -189,7 +190,11 @@ return {
 
 						local vtsls = require("vtsls")
 
-						nmap("gR", function()
+						nmap("<leader>ca", function()
+							vtsls.commands.source_actions()
+						end, "show available code actions")
+
+						nmap("grR", function()
 							vtsls.commands.file_references(0)
 						end, "File References")
 

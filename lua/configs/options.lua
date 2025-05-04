@@ -3,7 +3,6 @@
 
 vim.o.splitbelow = true
 vim.o.splitright = true
-
 vim.opt.wrap = false
 
 -- Make line numbers default
@@ -42,8 +41,6 @@ vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
-vim.opt.colorcolumn = "80"
 
 vim.cmd.colorscheme("habamax")
 
