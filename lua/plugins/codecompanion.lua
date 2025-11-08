@@ -1,0 +1,40 @@
+return {}
+-- return {
+--   {
+--     "MeanderingProgrammer/render-markdown.nvim",
+--     ft = { "markdown", "codecompanion" }
+--   },
+--   {
+--     "echasnovski/mini.diff",
+--     config = function()
+--       local diff = require("mini.diff")
+--       diff.setup({
+--         -- Disabled by default
+--         source = diff.gen_source.none(),
+--       })
+--     end,
+--   },
+--
+--   {
+--   "olimorris/codecompanion.nvim",
+--   opts = {},
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",
+--     "nvim-treesitter/nvim-treesitter",
+--   },
+--
+--   config = function()
+--     require("codecompanion").setup({
+--       strategies = {
+--         chat = {
+--           adapter = "openai",
+--           model = "gpt-4.1-mini-2025-04-14",
+--         },
+--         inline = {
+--           adapter = "openai",
+--           model = "gpt-4.1-mini-2025-04-14",
+--         },
+--       },
+--     })
+--   end
+-- } }
