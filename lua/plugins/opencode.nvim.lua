@@ -4,6 +4,12 @@ return {
     ---@type opencode.Opts
     vim.g.opencode_opts = {
       -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
+      provider = {
+        enabled = "snacks", -- Default when `snacks.terminal` is enabled.
+        -- snacks = {
+        --   -- Customize `snacks.terminal` to your liking.
+        -- }
+      }
     }
 
     -- Required for `opts.auto_reload`.
@@ -17,8 +23,8 @@ return {
     vim.keymap.set("n", "<S-C-u>", 
     function() require("opencode").command("session.half.page.up") end, { desc = "opencode half page up" })
     vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
-    -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-    vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
-    vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+    -- -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
+    -- vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
+    -- vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
   end,
 }
