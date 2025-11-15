@@ -16,3 +16,6 @@ npm install -g @vlabo/cspell-lsp
 
 ### tailwind
 npm install -g @tailwindcss/language-server
+
+### bash
+npm i -g bash-language-server
