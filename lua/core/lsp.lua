@@ -6,6 +6,7 @@ vim.lsp.enable({
   "cspell_ls",
   "tailwindcss",
   "copilot",
+  "bashls",
 })
 
 vim.diagnostic.config({
