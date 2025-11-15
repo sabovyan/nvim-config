@@ -140,7 +140,7 @@ return {
 				fzf.git_bcommits(git_options)
 			end, { desc = "Current Buffer History" })
 
-			vim.keymap.set("n", "<leader>gC", function()
+			vim.keymap.set("n", "<leader>gp", function()
 				fzf.git_commits(git_options)
 			end, { desc = "Current History" })
 
