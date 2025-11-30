@@ -19,3 +19,6 @@ npm install -g @tailwindcss/language-server
 
 ### bash
 npm i -g bash-language-server
+
+### biome
+npm install [-g] @biomejs/biome
