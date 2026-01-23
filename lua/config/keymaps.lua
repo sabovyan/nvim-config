@@ -193,6 +193,14 @@ vim.keymap.set("n", "<leader>cyc", function()
 	vim.fn.setreg("+", vim.fn.expand("%:t"))
 end, { desc = "Yank File Name" })
 
+vim.keymap.set("n", "<leader>dh", function()
+  vim.diagnostic.config({ virtual_lines = false, virtual_text = false })
+end, { desc = "Hide diagnostics" })
+
+vim.keymap.set("n", "<leader>ds", function()
+  vim.diagnostic.config({ virtual_lines = true, virtual_text = false })
+end, { desc = "Hide diagnostics" })
+
 vim.keymap.set("n", "<leader>?", function()
 	local word = vim.fn.expand("<cword>")
 	word = word:lower()
