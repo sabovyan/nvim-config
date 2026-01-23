@@ -92,6 +92,15 @@ vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
+-- Diagnostic navigation (ERROR severity only)
+vim.keymap.set("n", "]e", function()
+  vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Next error" })
+
+vim.keymap.set("n", "[e", function()
+  vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Previous error" })
+
 -- TODO: make this work
 -- -- toggle options
 -- map("n", "<leader>uf", function() Util.format.toggle() end, { desc = "Toggle auto format (global)" })
