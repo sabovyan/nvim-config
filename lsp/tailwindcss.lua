@@ -93,6 +93,12 @@ return {
         htmlangular = 'html',
         templ = 'html',
       },
+      classFunctions = { "cn", "cva", "cx", "tv", "twSavaMerge" },
+      experimental = {
+        classRegex = {
+          { "(`.*?`)", "(\".*?\")", "('.*?')" }
+        },
+      },
     },
   },
   before_init = function(_, config)
