@@ -1,20 +1,32 @@
 return {
-{
-  "rose-pine/neovim",
-	name = "rose-pine",
-  lazy = false,
-  priority = 1000, -- Ensure it loads first
-  config = function()
-    require("rose-pine").setup({
-      dim_inactive_windows = true,
-      highlight_groups = {
-        StatusLine = { fg = "love", bg = "love", blend = 10 },
-        StatusLineNC = { fg = "subtle", bg = "surface" },
-        NormalFloat = { bg = "Overlay" },
-      },
-    })
-  end,
-},
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      transparent_mode = true,
+    }
+  },
+  -- {
+  --   "olimorris/onedarkpro.nvim",
+  --   priority = 1000, -- Ensure it loads first
+  -- },
+-- {
+--   "rose-pine/neovim",
+-- 	name = "rose-pine",
+--   lazy = false,
+--   priority = 1000, -- Ensure it loads first
+--   config = function()
+--     require("rose-pine").setup({
+--       dim_inactive_windows = true,
+--       highlight_groups = {
+--         StatusLine = { fg = "love", bg = "love", blend = 10 },
+--         StatusLineNC = { fg = "subtle", bg = "surface" },
+--         NormalFloat = { bg = "Overlay" },
+--       },
+--     })
+--   end,
+-- },
 -- {
 --     "2nthony/vitesse.nvim",
 --     dependencies = {
@@ -36,70 +48,71 @@ return {
 -- 		-- vim.cmd.colorscheme("gruvbox-material")
 -- 	end,
 -- },
--- {
--- 		"catppuccin/nvim",
--- 		name = "catppuccin",
--- 		lazy = false,
--- 		priority = 1000,
--- 		opts = {
--- 			term_colors = true,
--- 			transparent_background = false,
--- 			styles = {
--- 				comments = { "italic" },
--- 				keywords = { "italic" },
---
--- 				strings = { "italic" },
--- 			},
--- 			dim_inactive = {
--- 				enabled = true,
--- 				shade = "light",
--- 				percentage = 0.15,
--- 			},
--- 			integrations = {
--- 				cmp = true,
--- 				gitsigns = true,
--- 				treesitter = true,
--- 				mason = true,
--- 				dashboard = true,
--- 				which_key = false,
--- 				headlines = true,
--- 				lsp_trouble = true,
--- 				notifier = true,
--- 				fzf = true,
--- 				native_lsp = {
--- 					enabled = true,
--- 					virtual_text = {
--- 						errors = { "italic" },
--- 						hints = { "italic" },
--- 						warnings = { "italic" },
--- 						information = { "italic" },
--- 					},
--- 					underlines = {
--- 						errors = { "underline" },
--- 						hints = { "underline" },
--- 						warnings = { "underline" },
--- 						information = { "underline" },
--- 					},
--- 					inlay_hints = {
--- 						background = true,
--- 					},
--- 				},
--- 			},
--- 			custom_highlights = function(colors)
--- 				return {
--- 					CursorLineNr = { fg = colors.peach },
--- 					Folded = { fg = colors.yellow },
---
--- 					-- tree-sitter
--- 					TSNone = { fg = colors.overlay2, style = { "italic", "underline" } },
--- 					TSTagAttribute = { fg = colors.rosewater, style = { "italic" } },
---
--- 					["@tag.attribute"] = { link = "TSTagAttribute" },
--- 					["@tag.attribute.tsx"] = { link = "TSTagAttribute" },
--- 					["@none"] = { link = "TSNone" },
--- 				}
--- 			end,
--- 		},
--- 	},
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     term_colors = true,
+  --     transparent_background = false,
+  --     styles = {
+  --       comments = { "italic" },
+  --       keywords = { "italic" },
+  --
+  --       strings = { "italic" },
+  --     },
+  --     dim_inactive = {
+  --       enabled = true,
+  --       shade = "light",
+  --       percentage = 0.15,
+  --     },
+  --     integrations = {
+  --       cmp = true,
+  --       gitsigns = true,
+  --       treesitter = true,
+  --       mason = true,
+  --       dashboard = true,
+  --       which_key = false,
+  --       headlines = true,
+  --       grug_far = true,
+  --       lsp_trouble = true,
+  --       notifier = true,
+  --       fzf = true,
+  --       native_lsp = {
+  --         enabled = true,
+  --         virtual_text = {
+  --           errors = { "italic" },
+  --           hints = { "italic" },
+  --           warnings = { "italic" },
+  --           information = { "italic" },
+  --         },
+  --         underlines = {
+  --           errors = { "underline" },
+  --           hints = { "underline" },
+  --           warnings = { "underline" },
+  --           information = { "underline" },
+  --         },
+  --         inlay_hints = {
+  --           background = true,
+  --         },
+  --       },
+  --     },
+  --     custom_highlights = function(colors)
+  --       return {
+  --         CursorLineNr = { fg = colors.peach },
+  --         Folded = { fg = colors.yellow },
+  --
+  --         -- tree-sitter
+  --         TSNone = { fg = colors.overlay2, style = { "italic", "underline" } },
+  --         TSTagAttribute = { fg = colors.rosewater, style = { "italic" } },
+  --
+  --         ["@tag.attribute"] = { link = "TSTagAttribute" },
+  --         ["@tag.attribute.tsx"] = { link = "TSTagAttribute" },
+  --         ["@none"] = { link = "TSNone" },
+  --       }
+  --     end,
+  --   },
+  -- },
 }
 

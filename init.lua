@@ -4,7 +4,7 @@ require("config.autocmd")
 require("core.lazy")
 require("core.lsp")
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("gruvbox")
 
 -- local function macos_appearance()
 --   local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
@@ -47,4 +47,4 @@ vim.cmd.colorscheme("rose-pine")
 --   -- vim.api.nvim_set_hl(0, "CursorInsert", { fg = "black", bg = main_cursor_color })
 --   -- vim.api.nvim_set_hl(0, "CursorReplace", { fg = "black", bg = main_cursor_color })
 -- end
-
+--
