@@ -65,3 +65,6 @@ vim.opt.foldlevel = 20
 
 -- Define what characters to show for tabs, trailing spaces, etc.
 -- vim.o.listchars = "tab:▸ ,trail:·,space:·,extends:>,precedes:<"
+
+-- Load custom statusline with diagnostics
+require("config.statusline")

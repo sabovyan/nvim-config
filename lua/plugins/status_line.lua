@@ -1,34 +1,34 @@
 return {
-	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-
-		require("nvim-web-devicons").set_icon({
-			oil = {
-				icon = "󰍜",
-				color = "#428850",
-				cterm_color = "65",
-				name = "Oil",
-			},
-		})
-
-		require("lualine").setup({
-			options = {
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
-			},
-			sections = {
-        lualine_b = {},
-				lualine_x = {},
-				lualine_y = {
-					{
-						"diff",
-						symbols = { added = " ", modified = "󰝤 ", removed = " " },
-					},
-					"diagnostics",
-				},
-				lualine_z = { "progress", "location" },
-			},
-		})
-	end,
+	-- "nvim-lualine/lualine.nvim",
+	-- dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- config = function()
+	--
+	-- 	require("nvim-web-devicons").set_icon({
+	-- 		oil = {
+	-- 			icon = "󰍜",
+	-- 			color = "#428850",
+	-- 			cterm_color = "65",
+	-- 			name = "Oil",
+	-- 		},
+	-- 	})
+	--
+	-- 	require("lualine").setup({
+	-- 		options = {
+	-- 			section_separators = { left = "", right = "" },
+	-- 			component_separators = { left = "", right = "" },
+	-- 		},
+	-- 		sections = {
+	--        lualine_b = {},
+	-- 			lualine_x = {},
+	-- 			lualine_y = {
+	-- 				{
+	-- 					"diff",
+	-- 					symbols = { added = " ", modified = "󰝤 ", removed = " " },
+	-- 				},
+	-- 				"diagnostics",
+	-- 			},
+	-- 			lualine_z = { "progress", "location" },
+	-- 		},
+	-- 	})
+	-- end,
 }
