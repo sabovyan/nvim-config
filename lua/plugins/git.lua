@@ -42,6 +42,7 @@ return {
 
 					-- Actions
 					map("n", "<leader>ghs", gs.stage_hunk, { desc = "[G]itsigns [S]tage hunk" })
+					map("n", "<D-A-y>", gs.stage_hunk, { desc = "[G]itsigns [S]tage hunk" })
 					map("n", "<leader>ghr", gs.reset_hunk, { desc = "[G]itsigns [R]eset hunk" })
 					map("n", "<leader>ghS", gs.stage_buffer)
 					map("n", "<leader>ghu", gs.undo_stage_hunk)
