@@ -20,10 +20,10 @@ return {
       bufdelete = { enabled = true },
       quickfile = { enabled = true },
       dim = { enabled = true },
-      indent = {
-        enabled = true,
-        only_current = true,
-      },
+      -- indent = {
+      --   enabled = true,
+      --   only_current = true,
+      -- },
     },
 
     keys = {
