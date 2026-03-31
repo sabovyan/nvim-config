@@ -19,7 +19,7 @@ local function get_cwd_by_lsp(client_name)
 	local roots = {} ---@type string[]
 
 	local bufnr = vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.get_active_clients({ bufnr })
+	local clients = vim.lsp.get_clients({ bufnr })
 
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
 	local buff_path = vim.loop.fs_realpath(buf_name)
