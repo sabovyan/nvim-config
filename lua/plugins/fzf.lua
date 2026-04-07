@@ -5,6 +5,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local fzf = require("fzf-lua")
+			local files_command = [[sh -c '(fd --color=never --hidden --type f --type l --exclude .git .; fd --color=never --hidden --no-ignore --type f --type l --exclude .git --exclude node_modules "^\\.env.*$" .) | sort -u']]
 
 			local common_files_options = {
 				cwd_prompt = false,
@@ -20,9 +21,14 @@ return {
 				winopts = { preview = { title = false } },
 				files = {
 					cwd_prompt = false,
+					cmd = files_command,
 					winopts = {
-						height = 1,
-						width = 1,
+						height = 0.8,
+						width = 0.8,
+						preview = {
+							layout = "vertical",
+							vertical = "down:45%",
+						},
 					},
 				},
 				oldfiles = {
@@ -47,7 +53,7 @@ return {
 				fzf.files()
 			end, { desc = "Open Files" })
 
-			vim.keymap.set("n", "<D-p>", function()
+			vim.keymap.set("n", "<C-p>", function()
 				fzf.files()
 			end, { desc = "Open Files" })
 
@@ -63,50 +69,6 @@ return {
 
 			-- Search
 			vim.keymap.set({ "n", "v" }, "<leader>sw", function()
-				local cwd = require("utils.cwd")
-
-				local function get_highlighted_text()
-					vim.cmd('noau normal! "vy"')
-
-					local text = vim.fn.getreg("v")
-					vim.fn.setreg("v", {})
-
-					text = string.gsub(text, "\n", "")
-
-					return text
-				end
-
-				local function get_current_text()
-					local mode = vim.api.nvim_get_mode()["mode"]
-
-					if mode == "n" then
-						return vim.fn.expand("<cword>")
-					end
-
-					local highlighted_text = get_highlighted_text()
-
-					if #highlighted_text > 0 then
-						return highlighted_text
-					end
-
-					return vim.fn.expand("<cword>")
-				end
-
-				-- fzf.builtin({
-				-- 	search = get_current_text(),
-				-- 	word_match = "-w",
-				-- 	cwd = cwd.get_cwd(),
-				-- })
-
-				-- local function grep_current_word_in_root()
-				-- 	local opts = {}
-				-- 	local word = get_current_text()
-				-- 	opts.word_match = "-w"
-				-- 	opts.search = word
-				-- 	opts.cwd = cwd.get_root()
-				-- 	-- builtin.grep_string(opts)
-				-- end
-
 				fzf.grep_cword({ winopts = { fullscreen = true } })
 			end, { desc = "Grep Current Word" })
 
@@ -157,9 +119,15 @@ return {
 				fzf.grep_curbuf(common_files_options)
 			end, { desc = "Fuzzy Find In Current Buffer" })
 
-
 			vim.keymap.set("n", "grr", function()
-        fzf.lsp_references()
+				fzf.lsp_references({
+					winopts = {
+						preview = {
+							layout = "vertical",
+							vertical = "down:45%",
+						},
+					},
+				})
 			end, { desc = "Find LSP References" })
 		end,
 	},
