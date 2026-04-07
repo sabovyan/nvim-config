@@ -7,6 +7,7 @@ brew install lua-language-server
 
 ### typescript
 npm install -g @vtsls/language-server 
+npm install @typescript/native-preview
 
 ### eslint, jsonls
 npm i -g vscode-langservers-extracted 
