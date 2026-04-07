@@ -74,8 +74,11 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev se
 -- map("i", ";", ";<c-g>u")
 
 -- save file
-vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>silent w<cr><esc>", { desc = "Save file" })
-vim.keymap.set({ "i", "x", "n", "s" }, "<D-S-s>", "<cmd>silent wa<cr><esc>", { desc = "Save file" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>silent w<cr><esc>", { desc = "Save file" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-S-s>", "<cmd>silent wa<cr><esc>", { desc = "Save file" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", function()
+	vim.notify("File not saved. Use Ctrl+S to save.", vim.log.levels.ERROR, { title = "Save shortcut changed" })
+end, { desc = "Warn that Cmd+S does not save" })
 
 -- --keywordprg
 -- map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
@@ -190,7 +193,7 @@ vim.keymap.set("n", "<leader>cyC", function()
 end, { silent = true, desc = "Yank File Path" })
 
 vim.keymap.set("n", "<leader>cyc", function()
-	vim.fn.setreg("+", vim.fn.expand("%:t"))
+	vim.fn.setreg("+", vim.fn.expand("%:p:h"))
 end, { desc = "Yank File Name" })
 
 vim.keymap.set("n", "<leader>dh", function()
